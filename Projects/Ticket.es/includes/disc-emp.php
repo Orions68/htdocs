@@ -2,7 +2,7 @@
 <button id="disc" type="button" class="btn btn-primary" style="visibility: hidden;" data-bs-toggle="modal" data-bs-target="#alertDialog1">Diálogo</button>
 
 <!-- Modal -->
-<div class="modal fade" id="alertDialog1" tabindex="-1" aria-labelledby="alertDialogLabel1" aria-hidden="true">
+<div class="modal fade" id="alertDialog1" tabindex="-1" aria-labelledby="alertDialogLabel1" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
   <div class="modal-dialog modal-dialog-centered">
   <div class="modal-content">
       <div class="modal-header">

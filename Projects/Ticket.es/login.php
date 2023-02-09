@@ -37,7 +37,7 @@ include "includes/nav-esp.html";
         if (isset($_SESSION["id"])) // Verifico que la sesión esté iniciada.
         {
             $id = $_SESSION["id"]; // Asigno a $id el valor de la sesión id.
-            $sql = "SELECT * FROM clients WHERE id='$id';"; // Preparo la consulta buscando solo por la id.
+            $sql = "SELECT * FROM clients WHERE id=$id;"; // Preparo la consulta buscando solo por la id.
             $ok = show($conn, $sql, "", "viewer"); // Asigno a la variable $ok el resultado de la función show().
             echo "</div></nav>";
             include "includes/disc-esp.php";

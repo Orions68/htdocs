@@ -9,7 +9,7 @@ if (isset($_POST["id"])) // Si llegan datos por POST.
     {
         $sql = "UPDATE company SET active=1 WHERE id=$id;"; // Hago la consulta update en la base de datos de la activación de la empresa.
     }
-    else // Si mo.
+    else // Si no.
     {
         $sql = "UPDATE clients SET active=1 WHERE id=$id;"; // Hago la consulta update en la base de datos de la activación del espectador.
     }
@@ -31,7 +31,7 @@ if (isset($_POST["id"])) // Si llegan datos por POST.
     }
     else // Si no se aceptó la política de Ticket.es.
     {
-        echo "<script>window.open('endsession.php', '_self')</script>"; // Redirijo a endsession.php, cierra sesión.
+        echo "<script>window.open('login.php', '_self')</script>"; // Redirijo a endsession.php, cierra sesión.
     }
 }
 ?>
