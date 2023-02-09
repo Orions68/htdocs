@@ -2,10 +2,6 @@
 include "includes/conn.php"; // Uso una conexión PDO a la base de datos.
 $title = "Ticket.es - Entrada de Empresas";
 include "includes/header.php";
-?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="js/script2.js"></script>
-<?php
 include "includes/modal-emp.html";
 if (isset($_POST["kind"])) // Si se reciben datos por POST.
 {
@@ -70,6 +66,5 @@ if (isset($_POST["kind"])) // Si se reciben datos por POST.
             echo "<script>toast(0, 'Evento Agregado', 'El Evento $kind: $event se ha Agregado, ya Puedes Poner a la Venta las Entradas Online.');</script>"; // Muestro el mensaje de OK.
         }
 }
+include "includes/footer.html";
 ?>
-</body>
-</html>

@@ -12,7 +12,7 @@ function logued($conn)
         include "includes/nav-esp.html"; // Se muestra el menu de Espectador logueado.
 
         $id_esp = $_SESSION["id"];
-        $sql = "SELECT * FROM clients WHERE id='$id_esp';";
+        $sql = "SELECT * FROM clients WHERE id=$id_esp;";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 

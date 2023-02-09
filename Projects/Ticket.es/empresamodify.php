@@ -3,10 +3,7 @@ include "includes/conn.php";
 $title = "Ticket.es - Modificando los datos de Empresa";
 include "includes/header.php";
 include "includes/modal.html";
-?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="js/script2.js"></script>
-<?php
+
 if (isset($_POST["username"])) // Si llegan datos por post.
 {
     $ok = true; // Uso la variable $ok para verificar que no se repita el DNI ni el E-mail.
@@ -35,7 +32,7 @@ if (isset($_POST["username"])) // Si llegan datos por post.
     }
     if ($ok) // Si $ok está a true, no hubo coincidencias.
     {
-        $sql = "SELECT email FROM company WHERE id='$id'"; // Preparo la consulta a la ID del cliente.
+        $sql = "SELECT email FROM company WHERE id=$id;"; // Preparo la consulta a la ID del cliente.
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_OBJ);
@@ -43,22 +40,22 @@ if (isset($_POST["username"])) // Si llegan datos por post.
         {
             if ($pass != "") // Si cambió la password
             {
-                $sql = "UPDATE company SET name='$name', email='$email', pass='$hash' WHERE id='$id';"; // Preparo la consulta modificando todo.
+                $sql = "UPDATE company SET name='$name', email='$email', pass='$hash' WHERE id=$id;"; // Preparo la consulta modificando todo.
             }
             else // Si no.
             {
-                $sql = "UPDATE company SET name='$name', email='$email' WHERE id='$id';"; // Preparo la consulta modificando Solo nombre y E-mail.
+                $sql = "UPDATE company SET name='$name', email='$email' WHERE id=$id;"; // Preparo la consulta modificando Solo nombre y E-mail.
             }
         }
         else // Si el E-mail está repetido, el cliente no cambió su E-mail.
         {
             if ($pass != "")
             {
-                $sql = "UPDATE company SET name='$name', pass='$hash' WHERE id='$id';"; // Preparo la consulta modificando solo Nombre y Contraseña.
+                $sql = "UPDATE company SET name='$name', pass='$hash' WHERE id=$id;"; // Preparo la consulta modificando solo Nombre y Contraseña.
             }
             else
             {
-                $sql = "UPDATE company SET name='$name' WHERE id='$id';"; // Preparo la consulta modificando solo Nombre.
+                $sql = "UPDATE company SET name='$name' WHERE id=$id;"; // Preparo la consulta modificando solo Nombre.
             }
         }
 
@@ -80,6 +77,5 @@ if (isset($_POST["username"])) // Si llegan datos por post.
         echo "<script>toast(1, 'Ya Registrado:', 'El E-mail $email ya Está Registrado en Este Sitio. Si no Recuerdas tu Contraseña haz Click en el Enlace Olvidaste tu Contraseña en la Pantalla de Login de Empresa.');</script>"; // Muestro el error, el E-mail ya está registrado.
     }
 }
+include "includes/footer.html";
 ?>
-</body>
-</html>

@@ -4,14 +4,11 @@ $title = "Ticket.es - Perfil de Empresa";
 include "includes/header.php";
 include "includes/modal2.html";
 include "includes/nav-emp.html";
-?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="js/script2.js"></script>
-<?php
+
     if (isset($_SESSION["idc"])) // Verifico si la sesión no está vacia.
     {
         $id = $_SESSION["idc"]; // Asigno a la variable $id el valor de la sesión id.
-        $sql = "SELECT * FROM company WHERE id='$id';"; // Preparo una consulta por la ID.
+        $sql = "SELECT * FROM company WHERE id=$id;"; // Preparo una consulta por la ID.
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_OBJ);
@@ -70,7 +67,7 @@ include "includes/nav-emp.html";
                                 <h2>Tus Eventos</h2>
                                 <br><br>
                                 <?php // Muestro los datos de los eventos publicados y las entradas vendidas.
-                                    $sql = "SELECT * FROM details INNER JOIN events, company WHERE company.id='$id' AND events.id_empresa=company.id AND details.id_event=events.id ORDER BY details.kind;";
+                                    $sql = "SELECT * FROM details INNER JOIN events, company WHERE company.id=$id AND events.id_empresa=company.id AND details.id_event=events.id ORDER BY details.kind;";
                                     $stmt = $conn->prepare($sql);
                                     $stmt->execute(); // Ejecuto la consulta hecha a la tabla details juntandola con events y company.
                                     if ($stmt->rowCount() > 0)
@@ -149,6 +146,3 @@ include "includes/nav-emp.html";
 <?php
 include "includes/footer.html";
 ?>
-<script>screenSize();</script>
-</body>
-</html>

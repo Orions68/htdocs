@@ -4,7 +4,7 @@ include "includes/conn.php";
 if (isset($_POST["id"])) // Si se recibe la id del espectador.
 {
     $id = $_POST["id"];
-    $sql = "DELETE FROM clients WHERE id='$id'";
+    $sql = "DELETE FROM clients WHERE id=$id";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     if ($stmt->rowCount()) // Lo borró de la base de datos.

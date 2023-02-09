@@ -7,11 +7,11 @@ if (isset($_POST["id"])) // Si llegan datos por POST.
     $who = $_POST["who"]; // A la Variable $who, $_POST["who"], quien aceptó los terminos, Empresa o Espectador.
     if ($who == "comp") // Si $who es comp
     {
-        $sql = "UPDATE company SET active=1 WHERE id='$id'"; // Hago la consulta update en la base de datos de la activación de la empresa.
+        $sql = "UPDATE company SET active=1 WHERE id=$id;"; // Hago la consulta update en la base de datos de la activación de la empresa.
     }
     else // Si mo.
     {
-        $sql = "UPDATE clients SET active=1 WHERE id='$id'"; // Hago la consulta update en la base de datos de la activación del espectador.
+        $sql = "UPDATE clients SET active=1 WHERE id=$id;"; // Hago la consulta update en la base de datos de la activación del espectador.
     }
     if ($accept) // Si se aceptó la politica de Ticket.es.
     {

@@ -3,10 +3,7 @@ include "includes/conn.php";
 $title = "Página de Registro de Ticket.es";
 include "includes/header.php";
 include "includes/modal.html";
-?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> <!-- Script de Bootstrap. -->
-<script src="js/script2.js"></script>
-<?php
+
 if (isset($_POST["username"]))
 {
     $already = false;
@@ -60,7 +57,7 @@ if (isset($_POST["username"]))
                 $path = "img/male.jpg";
             }
         }
-        $stmt = $conn->prepare("UPDATE clients SET path='$path' WHERE id='$id';"); // Preparo una consulta para Actualizar la tabla.
+        $stmt = $conn->prepare("UPDATE clients SET path='$path' WHERE id=$id;"); // Preparo una consulta para Actualizar la tabla.
         $stmt->execute(); // La Ejecuto.
 
         $conn = null;

@@ -7,11 +7,7 @@ include "includes/modal.html"; // Este diálogo muestra los errores.
 include "includes/modal-carrousel.html"; // Este diálogo muestra las Imágenes de los eventos.
 include "loguedin.php";
 logued($conn);
-?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="js/script.js"></script>
-<script src="js/script2.js"></script>
-<?php
+
 if (isset($_REQUEST["kind"])) // Si llegan datos por POST.
 {
     $kind = $_REQUEST["kind"];
@@ -79,6 +75,3 @@ else
 <?php
 include "includes/footer.html";
 ?>
-<script>screenSize();</script>
-</body>
-</html>

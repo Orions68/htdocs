@@ -4,7 +4,7 @@ include "includes/conn.php";
 if (isset($_POST["id"])) // Si se recibe la id de la empresa.
 {
     $id = $_POST["id"];
-    $sql = "DELETE FROM company WHERE id='$id'";
+    $sql = "DELETE FROM company WHERE id=$id";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     if ($stmt->rowCount()) // Lo borró de la base de datos.

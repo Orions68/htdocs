@@ -39,8 +39,6 @@ if (isset($_SESSION["id"])) // Si está iniciada la session de espectador.
     $id_esp = $_SESSION["id"]; // Asigo a la variable $id_esp la id de la sesión de espectador, uso esa variable ya que se usa la varibla $id para las id de los eventos.
 }
 ?>
-<script src="js/script2.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <section class='container-fluid pt-3'>
     <div class='row'>
         <div class='col-sm-1'></div>
@@ -84,6 +82,3 @@ if (isset($_SESSION["id"])) // Si está iniciada la session de espectador.
 <?php
 include "includes/footer.html";
 ?>
-<script>screenSize()</script>
-</body>
-</html>

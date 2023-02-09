@@ -3,10 +3,7 @@ include "includes/conn.php";
 $title = "Ticket.es - Modificando los datos del Espectador";
 include "includes/header.php";
 include "includes/modal.html";
-?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="js/script2.js"></script>
-<?php
+
 if (isset($_POST["username"])) // Si llegan datos por post.
 {
     $ok = true; // Uso la variable $ok para verificar que no se repita el DNI ni el E-mail.
@@ -48,7 +45,7 @@ if (isset($_POST["username"])) // Si llegan datos por post.
     }
     if ($ok) // Si $ok está a true, no hubo coincidencias.
     {
-        $sql = "SELECT phone, email FROM clients WHERE id='$id'"; // Preparo la consulta a la ID del cliente.
+        $sql = "SELECT phone, email FROM clients WHERE id=$id;"; // Preparo la consulta a la ID del cliente.
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_OBJ); // Asigno el resultado a la variable $row.
@@ -121,6 +118,5 @@ if (isset($_POST["username"])) // Si llegan datos por post.
         echo "<script>toast(1, 'Ya Registrado:', 'El E-mail $email o el Teléfono $phone, ya Están Registrados en Este Sitio. Si no Recuerdas tu Contraseña haz Click en el Enlace Olvidaste tu Contraseña en la Pantalla de Login de Espectador.');</script>"; // Muestro el error, el E-mail ya está registrado.
     }
 }
+include "includes/footer.html";
 ?>
-</body>
-</html>

@@ -10,11 +10,7 @@ include "includes/mod-esp-log.html";
 include "includes/car.html"; // Carro de la compra.
 include "includes/car_dialog.html"; // Diálogo cuando se agrega algo al carro.
 // include "includes/nav-esp.html";
-?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="js/script.js"></script>
-<script src="js/script2.js"></script>
-<?php
+
 include "includes/showLogin.php";
 $ok = false;
 include "includes/nav-esp.html";
@@ -59,7 +55,7 @@ include "includes/nav-esp.html";
     else // Si se encontró.
     {
         $id = $_SESSION["id"];
-        $sql = "SELECT active FROM clients WHERE id='$id';"; // Preparo la consulta de la columna active.
+        $sql = "SELECT active FROM clients WHERE id=$id;"; // Preparo la consulta de la columna active.
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) // Si hay resultados.
@@ -93,6 +89,3 @@ include "includes/nav-esp.html";
     }
 include "includes/footer.html";
 ?>
-<script>screenSize();</script>
-</body>
-</html>

@@ -31,7 +31,6 @@ if (isset($_SESSION["id"])) // Si está iniciada la session de espectador.
     $id_esp = $_SESSION["id"]; // Asigo a la variable $id_esp la id de la sesión de espectador, uso esa variable ya que se usa la varibla $id para las id de los eventos.
 }
 ?>
-<script src="js/script2.js"></script>
 <section class='container-fluid pt-3'>
     <div class='row'>
         <div class='col-sm-1'></div>
@@ -53,13 +52,13 @@ if (isset($_SESSION["id"])) // Si está iniciada la session de espectador.
                             echo "<br><br>";
                             if (isset($_SESSION["id"])) // Si está logueado el espectador, guardo la factura con su ID.
                             {
-                                $sql = "SELECT id FROM invoice WHERE id_cliente='$id_esp' ORDER BY id DESC LIMIT 1;"; // Esta consulta obtiene la última id del espectador logueado.
+                                $sql = "SELECT id FROM invoice WHERE id_cliente=$id_esp ORDER BY id DESC LIMIT 1;"; // Esta consulta obtiene la última id del espectador logueado.
                                 $stmt1 = $conn->prepare($sql); // Uso $stmt1, para no sobreescribir mi statement anterior.
                                 $stmt1->execute();
                                 $row = $stmt1->fetch(PDO::FETCH_COLUMN);
                                 if ($row > 0) // Si hay datos, es que ya había comprado entradas.
                                 {
-                                    $sql = "SELECT accumulated FROM invoice WHERE id='$row'"; // Esta consulta obtiene la cantidad de entradas acumuladas que compró el espectador.
+                                    $sql = "SELECT accumulated FROM invoice WHERE id=$row;"; // Esta consulta obtiene la cantidad de entradas acumuladas que compró el espectador.
                                     $stmt1 = $conn->prepare($sql);
                                     $stmt1->execute();
                                     $amnt = $stmt1->fetch(PDO::FETCH_COLUMN); // Le asigno la cantidad de entradas compradas a la variable $amnt.
@@ -90,6 +89,6 @@ if (isset($_SESSION["id"])) // Si está iniciada la session de espectador.
         <div class='col-sm-1'></div>
     </div>
 </section>
-<script>screenSize()</script>
-</body>
-</html>
+<?php
+include "includes/footer.html";
+?>

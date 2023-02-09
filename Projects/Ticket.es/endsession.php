@@ -43,5 +43,3 @@ include "includes/start.html";
 <?php
 include "includes/footer.html";
 ?>
-</body>
-</html>
