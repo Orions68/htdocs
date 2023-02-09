@@ -1,0 +1,23 @@
+label, input, a, select, option
+{
+    font-size: 1.3rem; /* Agrando las fuetes de las label, los input y los enlaces a 1.3 rem. */
+}
+
+select
+{
+	width: 440px;
+}
+
+table /* Personalizo la tabla con borde rojo y tamaño de la fuente también a 1.3 rem, con width 120% para que todas las columnas tengan espacio al final. */
+{
+    border-collapse: unset; /* Esta linea rompe el control del estilo de Bootstrap. */
+    border: 1px solid red;
+    font-size: 1.3rem;
+    width: 110%;
+}
+
+tr, th, td /* A los títulos, filas y columnas de la tabla les doy borde de color azul y el tamaño de la fuente a 1.3 rem. */
+{
+    border: 1px solid blue;
+    font-size: 1.3rem;
+}

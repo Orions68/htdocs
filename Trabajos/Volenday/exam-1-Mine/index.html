@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exam 1</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <br><br>
+    <div class="margin">
+    <label><select id="obj" onchange="obj(this.id)" required>
+      <option value="">Select an Object</option>
+      <option value="actorInformation">Actor Information</option>
+      <option value="actressInformation">Actress Information</option>
+    </select> Select the Object</label>
+    <br><br>
+    <label><select id="data" onchange="data(this.id)" required>
+      <option value="">Select the Data to Display</option>
+      <option value="firstName">Name</option>
+      <option value="lastName">Surname</option>
+      <option value="movies">Movies</option>
+    </select> Select the Data</label>
+  </div>
+    <br><br>
+    <h2 id="result"></h2>
+    <!-- <script src="js/index.js"></script> -->
+    <script src="js/new.js"></script>
+  </body>
+</html>

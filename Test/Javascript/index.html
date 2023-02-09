@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<script src="js/script.js"></script>
+<title>Título de la Página</title>
+</head>
+
+<body>
+<form action="first.php" method="post">
+<label><input type="number" name="icecream"> Cantidad</label>
+<br><br>
+<label><select id="qtty" name="list" onchange="addFlavour(document.getElementById('qtty').value)">
+<option value="">Selecciona un Gusto</option>
+<option value="1">1 Bola</option>
+<option value="2">2 Bolas</option>
+<option value="3">3 Bolas</option>
+</select> Gustos</label>
+<br><br>
+<div id="here"></div>
+<br><br>
+<input type="submit" value="Pedír el Helado">
+</form>
+</body>
+
+</html>

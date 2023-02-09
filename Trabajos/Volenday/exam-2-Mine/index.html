@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Exam 2</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <br><br>
+    <div class="margin">
+      <h1>Please Enter the data of the Persons, You can provide just the Height, or leave the fields blank</h1>
+      <br><br>
+      <h2>Person One</h2>
+      <label><input id="name1" type="text"> Please enter your Name</label>
+      <br><br>
+      <label><input id="height1" type="number"> Please enter your Height in Centimetres</label>
+      <br><br>
+      <label><input id="weight1" type="number"> Please enter your Weight in Kilograms</label>
+      <br><br>
+      <button onclick="getPerson()">Send Person One Data</button>
+      <br><br>
+      <h2>Person Two</h2>
+      <label><input id="name2" type="text"> Please enter your Name</label>
+      <br><br>
+      <label><input id="height2" type="number"> Please enter your Height in Centimetres</label>
+      <br><br>
+      <label><input id="weight2" type="number"> Please enter your Weight in Kilograms</label>
+      <br><br>
+      <button id="btn2" style="visibility: hidden;" onclick="getPerson()">Send Person Two Data</button>
+      <br><br>
+      <br><br>
+      <button id="btn3" style="visibility: hidden;" onclick="joinIt()">Calculate Avarage Height</button>
+      <br><br>
+      <h2 id="result"></h2>
+    </div>
+    <script src="js/index.js"></script>
+
+</body>
+</html>

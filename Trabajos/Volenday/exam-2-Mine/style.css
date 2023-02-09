@@ -1,0 +1,10 @@
+select, option, label
+{
+    font-size: 1.25rem;
+}
+
+.margin
+{
+    margin-left: 50px;
+    margin-top: 50px;
+}

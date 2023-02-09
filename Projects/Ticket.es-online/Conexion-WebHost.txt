@@ -1,0 +1,18 @@
+000WEBHOST: https://ticket-es.000webhostapp.com/index.php
+
+user: cesarmatelat@gmail.com
+pass: Anubis68
+
+Data Base
+
+host: localhost
+name: id19056928_ticketes
+user: id19056928_root
+pass: Anubis@-1968
+
+Ok:
+SELECT *, invoice.path AS ruta FROM invoice INNER JOIN events, details, clients WHERE invoice.id_cliente=1 AND invoice.id_event=events.id AND details.id_event=events.id GROUP BY invoice.id ORDER BY details.kind;
+
+
+Works too:
+SELECT *, invoice.path AS ruta FROM invoice INNER JOIN events, details, clients WHERE invoice.id_cliente=1 AND invoice.id_event=events.id GROUP BY invoice.id ORDER BY details.kind;

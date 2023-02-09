@@ -1,0 +1,10 @@
+SET @count = 0;
+UPDATE TableName SET id = @count:= @count + 1;
+ALTER TABLE TableName AUTO_INCREMENT = 1;
+
+
+En PHP, PDO:
+
+$sql = "SET @count = 0; UPDATE invoice SET id = @count:= @count + 1; ALTER TABLE invoice AUTO_INCREMENT = 1;";
+$stmt = $conn->prepare($sql);
+$stmt->execute();

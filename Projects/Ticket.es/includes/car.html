@@ -1,0 +1,26 @@
+<!-- Modal Button, El contenido del carro de la compra, tiene un formulario que llama al script payment.php. -->
+<button id="car" type="button" class="btn btn-primary" style="visibility: hidden;" data-bs-toggle="modal" data-bs-target="#carDialog">Diálogo</button>
+
+<!-- Modal -->
+<div class="modal fade" id="carDialog" tabindex="-1" aria-labelledby="carDialogLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title" id="carDialogLabel">Carro de la Compra</h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">_</button>
+      </div>
+      <div class="modal-body">
+          <p>Este es el contenido de tu carro:</p>
+          <form action="payment.php" method="post">
+          <div id="container">
+          </div>
+          <label>Lista: <textarea id="load" rows="8" cols="50"></textarea></label><br><br>
+          <input type="submit" data-bs-dismiss="modal" value="Comprar Estos Artículos">
+          </form>
+      </div>
+      <div class="modal-footer">
+      <button type="button" id="close_car_dialog" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+  </div>
+  </div>
+</div>

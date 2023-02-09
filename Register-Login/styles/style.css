@@ -1,0 +1,54 @@
+#header
+{
+	width:100%;
+	text-align:center;
+}
+
+#logo
+{
+	width:100%;
+	height:200px;
+}
+
+#menu
+{
+	width:15%;
+	height:100%;
+	border:4px solid aqua;
+}
+
+#submenu
+{
+	width:100%;
+}
+
+#links
+{
+	font-size:32px;
+	text-decoration:none;
+}
+
+input, label
+{
+	height:32px;
+	font-size:32px;
+}
+
+#button
+{
+	height:48px;
+}
+
+#login
+{
+	position:fixed;
+	top:80px;
+	right:130px;
+	width:280px;
+	float:right;
+}
+
+#email
+{
+	font-size:32px;
+}

@@ -1,0 +1,42 @@
+<!-- Modal Button, Este diálogo contiene un carrusel que muestra las imágenes de los eventos. -->
+<button id="alertaCarousel" type="button" class="btn btn-primary" style="visibility: hidden;" data-bs-toggle="modal" data-bs-target="#alertDialogCarousel">Diálogo</button>
+
+<!-- Modal -->
+<div class="modal fade" id="alertDialogCarousel" tabindex="-1" aria-labelledby="alertDialogLabelCarousel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title" id="alertDialogLabelCarousel">Imagenes del Evento</h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">_</button>
+      </div>
+      <div class="modal-body">
+          
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="" id="img1" class="d-block w-100" alt="1ª Imagen del Evento" width="100%" height="600px">
+              </div>
+              <div class="carousel-item">
+                <img src="" id="img2" class="d-block w-100" alt="2ª Imagen del Evento" width="100%" height="600px">
+              </div>
+              <div class="carousel-item">
+                <img src="" id="img3" class="d-block w-100" alt="3ª Imagen del Evento" width="100%" height="600px">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+      <button type="button" id="close_carousel_dialog" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+  </div>
+  </div>
+</div>

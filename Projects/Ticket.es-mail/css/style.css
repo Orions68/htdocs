@@ -1,0 +1,30 @@
+label, input, a
+{
+    font-size: 1.3rem;
+}
+
+table
+{
+    border-collapse: unset;
+    border: 1px solid red;
+    font-size: 1.3rem;
+    width: 120%;
+}
+
+tr, th, td
+{
+    border: 1px solid blue;
+    font-size: 1.3rem;
+}
+
+span
+{
+    background-color: rgba(80,80,80,.5) !important;
+}
+
+.mysize
+{
+    padding: 10px;
+    width: 360px;
+    height: 280px;
+}
