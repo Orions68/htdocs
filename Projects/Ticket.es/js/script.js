@@ -75,9 +75,9 @@ function adding(article) // Esta Función recibe el articulo, lo agrega al array
 
 function added(article) // La función added(article) se usa para generar dinamicamente los input del formulario del carro de la compra con el artículo y la cantidad 1.
 {
-    var container = document.getElementById("container"); // Container contiene la ID del div con ID container, donde se crea dinamicamente el contenido del formulario con todas las entradas compradas.
+    let container = document.getElementById("container"); // Container contiene la ID del div con ID container, donde se crea dinamicamente el contenido del formulario con todas las entradas compradas.
 
-    var input = document.createElement("input"); // Asigno a la variable input la creación de un input.
+    let input = document.createElement("input"); // Asigno a la variable input la creación de un input.
     input.type = "hidden"; // Lo hago de tipo hidden, oculto.
     input.name = "article" + index; // Le asigno el nombre article y le concateno el valor de index, article0, article1, etc.
     input.id = "article" + index; // Le asigno el id article y le concateno el valor de index, article0, article1, etc.

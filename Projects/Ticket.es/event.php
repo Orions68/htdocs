@@ -3,6 +3,7 @@ include "includes/conn.php";
 $title = "Ticket.es - Resultados de Eventos"; // Título de la página
 include "includes/header.php"; // El Header HTML 5.
 $ok = false;
+include "includes/car.html";
 include "includes/modal.html"; // Este diálogo muestra los errores.
 include "includes/modal-carrousel.html"; // Este diálogo muestra las Imágenes de los eventos.
 include "loguedin.php";
@@ -62,8 +63,8 @@ else
                         <div id="table"></div>
                         <br>
                         <span id="page"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onclick="javascript:prev()" id="prev">Anteriores Resultados</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onclick="javascript:next()" id="next">Siguientes Resultados</button><br>
+                        <button onclick="prev()" id="prev">Anteriores Resultados</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button onclick="next()" id="next">Siguientes Resultados</button><br>
                         <script>change(1, 5, "events");</script>
                         <?php
                     }

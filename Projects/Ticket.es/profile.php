@@ -6,6 +6,7 @@ if (!empty($_SESSION["invoice"])) // Verifico si la session invoice está inicia
 }
 $title = "Ticket.es - Perfil del Espectador";
 include "includes/header.php";
+include "includes/car.html";
 include "includes/modal2.html";
 include "includes/nav-esp.html";
 
@@ -169,8 +170,9 @@ include "includes/nav-esp.html";
                                         <div id="table"></div>
                                         <br>
                                         <span id="page"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button onclick="javascript:prev()" id="prev">Anteriores Resultados</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button onclick="javascript:next()" id="next">Siguientes Resultados</button><br>
+                                        <!-- <button onclick="javascript:prev()" id="prev">Anteriores Resultados</button>&nbsp;&nbsp;&nbsp;&nbsp; -->
+                                        <button onclick="prev()" id="prev">Anteriores Resultados</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button onclick="next()" id="next">Siguientes Resultados</button><br>
                                         <script>change(1, 5, "viewer");</script>
                                         <?php
                                     }
