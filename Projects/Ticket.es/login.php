@@ -4,10 +4,10 @@ if (!empty($_SESSION["invoice"])) // Verifico si la session invoice está inicia
 {
     unset($_SESSION["invoice"]); // Si está la limpio.
 }
+include "includes/car.html"; // Carro de la compra.
 $title = "Ticket.es - Entrada de Espectador";
 include "includes/header.php";
 include "includes/mod-esp-log.html";
-include "includes/car.html"; // Carro de la compra.
 include "includes/car_dialog.html"; // Diálogo cuando se agrega algo al carro.
 // include "includes/nav-esp.html";
 

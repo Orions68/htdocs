@@ -7,7 +7,7 @@ if (isset($_POST["kind"])) // Si recibe datos en $_POST["kind"].
     echo "<input type='hidden' name='kind' value='$kind'>"; // Creo un input type hidden con el nombre kind y el valor de $kind.
     echo '<label><select name="place" required>'; // Creo un selector con el nombre place.
     echo '<option>Selecciona el Lugar</option>'; // Agrego un option pidiendo que se seleccione un lugar.
-    $stmt = $conn->prepare("CALL Busqueda_X_Tipo('$kind')"); // Llamo al procedimiento Busqueda_X_Tipo pasandole la variable $kind.
+    $stmt = $conn->prepare("CALL Search_X_Place('$kind')"); // Llamo al procedimiento Busqueda_X_Tipo pasandole la variable $kind.
     $stmt->execute(); // Ejecuto la consulta a la base de datos.
     if ($stmt->rowCount() > 0) // Si hay resultados.
     {

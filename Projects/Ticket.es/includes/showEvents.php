@@ -103,7 +103,7 @@ function lookEvents($conn, $tipo, $lugar) // Esta función hace la consulta a la
     }
     else // Si la variable $tipo tiene algo.
     {
-        $sql = "CALL Busqueda_X_Lugar('$lugar', '$tipo')"; // Uso un Procedure que me devuelve las localidades de los eventos, se llamó desde event.php.
+        $sql = "CALL Search_X_Kind('$lugar', '$tipo')"; // Uso un Procedure que me devuelve las localidades de los eventos, se llamó desde event.php.
     }
     $stmt = $conn->prepare($sql); // Hago la conexión a la base de datos.
     $stmt->execute(); // La ejecuto.

@@ -402,14 +402,14 @@ function toast_disc() // Muestra el diálogo de Bootstrap para los disclaimer de
     disc.click(); // Le hago un click, para mostrar el diálogo.
 }
 
-function checkTitle() // Fnción de los scripts de PHP carro y register para ocultar el botón del carro de la compra.
-{
-    var car_button = document.getElementById("car_button");
-    if (document.title != "Ticket.es - Entrada de Espectador") // Verifico si no estoy en la página login.php.
-    {
-        car_button.style.visibility = "hidden"; // Si no oculto el botón del carro de la compra.
-    }
-}
+// function checkTitle() // Fnción de los scripts de PHP carro y register para ocultar el botón del carro de la compra.
+// {
+//     var car_button = document.getElementById("car_button");
+//     if (document.title != "Ticket.es - Entrada de Espectador") // Verifico si no estoy en la página login.php.
+//     {
+//         car_button.style.visibility = "hidden"; // Si no oculto el botón del carro de la compra.
+//     }
+// }
 
 function QRGen(index) // Función para generar el código QR, directamente desde una API de google, (seguramente durará muy poco), recibe el numero de entradas compradas, del script checkout.php.
 {

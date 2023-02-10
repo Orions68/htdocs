@@ -1,9 +1,9 @@
 <?php
 include "includes/conn.php";
 $title = "Ticket.es - Resultados de Eventos"; // Título de la página
+include "includes/car.html";
 include "includes/header.php"; // El Header HTML 5.
 $ok = false;
-include "includes/car.html";
 include "includes/modal.html"; // Este diálogo muestra los errores.
 include "includes/modal-carrousel.html"; // Este diálogo muestra las Imágenes de los eventos.
 include "loguedin.php";

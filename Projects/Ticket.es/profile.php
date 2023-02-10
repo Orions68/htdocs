@@ -4,9 +4,9 @@ if (!empty($_SESSION["invoice"])) // Verifico si la session invoice está inicia
 {
     unset($_SESSION["invoice"]); // Si está la limpio.
 }
+include "includes/car.html";
 $title = "Ticket.es - Perfil del Espectador";
 include "includes/header.php";
-include "includes/car.html";
 include "includes/modal2.html";
 include "includes/nav-esp.html";
 
@@ -104,7 +104,7 @@ include "includes/nav-esp.html";
                                 <h2>Tus Entradas</h2>
                                 <br><br>
                                 <?php
-                                    $sql = "SELECT *, invoice.path AS ruta FROM invoice INNER JOIN events, details, clients WHERE invoice.id_cliente=$id AND invoice.id_event=events.id AND details.id_event=events.id GROUP BY invoice.id ORDER BY details.kind;";
+                                    $sql = "SELECT *, invoice.path AS ruta FROM invoice INNER JOIN events, details, clients WHERE invoice.id_cliente=$id AND invoice.id_event=events.id AND details.id_event=events.id GROUP BY invoice.id ORDER BY invoice.date DESC;";
                                     $stmt = $conn->prepare($sql);
                                     $stmt->execute();
                                     if ($stmt->rowCount() > 0)
@@ -170,7 +170,6 @@ include "includes/nav-esp.html";
                                         <div id="table"></div>
                                         <br>
                                         <span id="page"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <!-- <button onclick="javascript:prev()" id="prev">Anteriores Resultados</button>&nbsp;&nbsp;&nbsp;&nbsp; -->
                                         <button onclick="prev()" id="prev">Anteriores Resultados</button>&nbsp;&nbsp;&nbsp;&nbsp;
                                         <button onclick="next()" id="next">Siguientes Resultados</button><br>
                                         <script>change(1, 5, "viewer");</script>
