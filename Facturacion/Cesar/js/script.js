@@ -105,16 +105,9 @@ function screen() // Establece el tamaño de las vistas en la pantalla.
 
 function views(view, heights, viewheight)
 {
-    if (view == view4)
+    if (heights < viewheight)
     {
-        view.style.height = viewheight - 160 + "px";
-    }
-    else
-    {
-        if (heights <= viewheight)
-        {
-            view.style.height = viewheight + "px";
-        }
+        view.style.height = viewheight + "px";
     }
 }
 

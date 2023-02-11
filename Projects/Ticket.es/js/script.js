@@ -323,11 +323,11 @@ function screenSize() // Función para dar el tamaño máximo de la pantalla a l
     }
 }
 
-function views(view, heights, size)
+function views(view, heights, viewheight)
 {
-    if (heights <= size)
+    if (heights < viewheight)
     {
-        view.style.height = size + "px";
+        view.style.height = viewheight + "px";
     }
 }
 
