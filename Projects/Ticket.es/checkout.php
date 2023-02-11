@@ -47,7 +47,7 @@ if (isset($_SESSION["id"])) // Si está iniciada la session de espectador.
                     <br><br><br><br>
                     <h1>Preparando tus Entradas</h1>
                     <h2>Todo está Listo.</h2>
-                    <h3>Todas tus entradas estarán disponibles en tu perfil de ususario. Solo para los usuarios registrados.</h3>
+                    <h3>Todas tus Entradas Estarán Disponibles en tu Perfil de Usuario. Solo para los Usuarios Registrados.</h3>
                     <form action="exit.php" method="post">
                     <?php
                     for ($i = 0; $i < $size; $i++)

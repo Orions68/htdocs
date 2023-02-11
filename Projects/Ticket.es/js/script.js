@@ -300,50 +300,34 @@ function screenSize() // Función para dar el tamaño máximo de la pantalla a l
     var view1 = document.getElementById("view1");
     var view2 = document.getElementById("view2");
     var view3 = document.getElementById("view3");
-    let screen = window.innerHeight; // Obtiene el tamaño vertical de la pantalla.
-    var body = document.body, html2 = document.documentElement; // Asigno a la variable body el body y a html2 el contenido.
-    var height = Math.max(body.scrollHeight, body.offsetHeight, html2.clientHeight, html2.scrollHeight, html2.offsetHeight); // Asigno a la variable height el valor máximo de la pantalla con todo el contenido.
+    let viewheight = window.innerHeight; // Obtiene el tamaño vertical de la pantalla (vista real).
+    // let view = screen.height; // Obtiene el tamaño de la resolución de pantalla.
 
-    if (page_top.offsetHeight <= screen) // Si el tamaño vertical de la vista es menor que el tamaño vertical de la pantalla.
+    views(page_top, page_top.offsetHeight, viewheight);
+
+    if (page_event != null) // Si existe el div view2
     {
-        views(page_top, screen, height);
-
-        if (page_event != null) // Si existe el div view2
+        views(page_event, page_event.offsetHeight, viewheight);
+        if (view1 != null)
         {
-            views(page_event, screen, height);
-            if (view1 != null)
+            views(view1, view1.offsetHeight, viewheight);
+            if (view2 != null)
             {
-                views(view1, screen, height);
-                if (view2 != null)
+                views(view2, view2.offsetHeight, viewheight);
+                if (view3 != null)
                 {
-                    views(view2, screen, height);
-                    if (view3 != null)
-                    {
-                        views(view3, screen, height);
-                    }
+                    views(view3, view3.offsetHeight, viewheight);
                 }
-                
             }
         }
     }
 }
 
-function views(view, size, bigsize)
+function views(view, heights, size)
 {
-    if (view <= size)
+    if (heights <= size)
     {
-        if (view == view3)
-        {
-            view.style.height = size - 160 + "px";
-        }
-        else
-        {
-            view.style.height = size + "px";
-        }
-    }
-    else
-    {
-        view.style.height = bigsize - 80 + "px";
+        view.style.height = size + "px";
     }
 }
 

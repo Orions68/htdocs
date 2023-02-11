@@ -43,7 +43,7 @@ include "includes/car_dialog.html"; // Diálogo cuando se agrega algo al carro.
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
                         <div class="d-flex justify-content-center align-items-center h-100"></div>
                             <div class="text-white">
-                                    <h1 class="mb-3">Ticket.es</h1>
+                                <h1 class="mb-3">Ticket.es</h1>
                             </div>
                     </div>
                     <div class="p-5 text-center bg-image" style="background-image: url('img/logo.jpg'); background-repeat: no-repeat; height: 480px;">
@@ -51,7 +51,7 @@ include "includes/car_dialog.html"; // Diálogo cuando se agrega algo al carro.
                     <div class="mask" style="background-color: rgba(0, 255, 0, 0.6);">
                         <div class="d-flex justify-content-center align-items-center h-100"></div>
                             <div class="text-white">
-                                    <h1 class="mb-3">Eventos en Todo el País</h1>
+                                <h1 class="mb-3">Eventos en Todo el País</h1>
                             </div>
                     </div>
                     <!-- Jumbotron -->
