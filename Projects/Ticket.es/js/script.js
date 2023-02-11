@@ -418,30 +418,81 @@ function changeit() // Función para la página de contacto.
 {
     var button = document.getElementById("change"); // En la variable button obtengo la ID del input type submit change.
     var contact = document.getElementById("contact"); // En la variable contact obtengo el id del selector.
+    var phone = document.getElementById("phone");
+    var email = document.getElementById("email");
+    var ph = document.getElementById("ph");
+    var em = document.getElementById("em");
 
     if (contact.value != "") // Si el valor en el selector ha cambiado.
     {
         switch (contact.value) // Hago un switch al valor en el selector.
         {
-            case "Telepatía": // Si es Telepatía.
-                button.value = "Conecta con mi Cerebro"; // Cambio el contenido del input type submit a Conecta con mi Cerebro.
-                break; // Salgo del switch.
-            case "Señales":
-                button.value = "Envíame las Señales";
-                break;
             case "Teléfono":
-                button.value = "Llamenme!";
+                email.style.visibility = "hidden";
+                phone.style.visibility = "visible";
+                em.required = false;
+                ph.required = true;
+                ph.value = "";
+                button.value = "Llámame!";
                 break;
             case "Whatsapp":
-                button.value = "Mandame un Guasap";
-                break;
-            case "E-mail":
-                button.value = "Espero tu E-mail";
+                email.style.visibility = "hidden";
+                phone.style.visibility = "visible";
+                em.required = false;
+                ph.required = true;
+                ph.value = "";
+                button.value = "Envíame un Watsapp";
                 break;
             default:
-                button.value = "Que Ilusión una Carta";
+                email.style.visibility = "visible";
+                phone.style.visibility = "hidden";
+                ph.required = false;
+                ph.value = 1;
+                em.required = true;
+                button.value = "Espero tu E-mail";
                 break;
         }
+    }
+}
+
+function connect(how) // Función para enviar un Whatsapp a la tienda, para que se ponga en contacto con el cliente, recibe la forma de comunicación, Teléfono o E-mail.
+{
+    let mssg = document.getElementById('mssg').value;
+    let num = +34664774821;
+    if (how == "E-mail") // Esto es solo para que aparezca cpntactame a en lugar de al.
+    {
+        var win = window.open(`https://wa.me/${num}?text=Por Favor contactame por: ${how} a: ${mssg} Mi nombre es: `, '_blank');
+    }
+    else
+    {
+        var win = window.open('https://wa.me/' + num + '?text=Por Favor contactame por: ' + how + ' al: ' + mssg + ' Mi nombre es: ', '_blank');
+    }
+}
+
+function goThere() // Cuando cambia el selector del menú para Móvil.
+{
+    var change = document.getElementById("change").value; // Change obtiene el valor en el selector.
+    switch(change)
+    {
+        default :
+            window.open("index.php#page_top", "_self");
+    }
+}
+
+function resolution() // Esta función comprueba si el ancho de la pantalla es de Ordenador o de Móvil.
+{
+    let mobile = document.getElementById("mobile");
+    let pc = document.getElementById("pc");
+    let width = innerWidth;
+    if (width < 965) // Si el ancho es inferior a 965.
+    {
+        pc.style.visibility = "hidden"; // Oculta el menú de Ordenador
+        mobile.style.visibility = "visible"; // Muestra el menú de Teléfono.
+    }
+    else // Si es mayor o igual a 965;
+    {
+        pc.style.visibility = "visible"; // Muestra el menú para Ordenador
+        mobile.style.visibility = "hidden"; // Oculta el menú para Teléfono.
     }
 }
 
@@ -501,12 +552,12 @@ function change(page, qtty, from) // Función que muestra los resultados de a 5 
         var today = new Date().getTime(); // Asigno a la variable today el día de hoy en milisegundos.
         var myday = []; // Declaro el array myday, contendrá la fecha de finalización del evento.
         var endday = []; // Declaro el array endday, contendrá los milisegundos del día de finalización del evento.
-        var html = "<table><tr><th>Evento</th><th>Título</th><th>Descripción</th><th>Precio</th><th>Lugar</th><th>Fecha de Inicio</th><th>Fecha de Finalización</th><th>Hora del Evento</th><th>Imágenes del Evento</th><th>Entradas</th></tr><tr>";
+        var html = "<table><tr><th>Evento</th><th>Título</th><th>Descripción</th><th style='width: 80px;'>Precio</th><th>Lugar</th><th>Fecha de Inicio</th><th>Fecha de Finalización</th><th>Hora del Evento</th><th>Imágenes del Evento</th><th>Entradas</th></tr><tr>";
     }
     else if (from == "comp") // Si la petición llega desde el perfil de empresa.
     {
         var length = kind.length; // La variable length será del tamaño del array kind.
-        var html = "<table><tr><th>Evento</th><th>Titulo</th><th>Lugar</th><th>Fecha de Inicio</th><th>Precio</th><th>Localidades</th><th>Vendidas</th></tr><tr>";
+        var html = "<table><tr><th>Evento</th><th>Titulo</th><th>Lugar</th><th>Fecha de Inicio</th><th style='width: 80px;'>Precio</th><th>Localidades</th><th>Vendidas</th></tr><tr>";
     }
     else // Si la petición llega desde el perfil de espectador.
     {
@@ -526,18 +577,18 @@ function change(page, qtty, from) // Función que muestra los resultados de a 5 
                 my_path[i] = path[i].split("¡"); // En el array my_path[i] hago un split de path[i], que es el resultado leido en la base de datos, separandolos por el signo ¡.
                 if (endday[i].getTime() < (today - 86400000)) // Verifico si la fecha de finalización (que se toma a primera hora, las 0:00) del evento es anterior a ayer.
                 {
-                    html += "<td>" + kind + "</td><td>" + evento[i] + "</td><td style='color: red;'>Evento Terminado " + desc[i] + "</td><td>" + price[i] + "</td><td>" + where[i] + "</td><td>" + start[i] + "</td><td>" + end[i] + "</td><td>" + hour[i] + " Hs." + "</td><td><a href='javascript:showCarrousel(\"" + path[i] + "\")'><img src='" + my_path[i][0] + "' width='160' height='120' alt='Imágenes del Evento'></a></td><td><small>No Disponible</small></td></tr><tr>";
+                    html += "<td>" + kind + "</td><td>" + evento[i] + "</td><td style='color: red;'>Evento Terminado " + desc[i] + "</td><td>" + price[i] + " €</td><td>" + where[i] + "</td><td>" + start[i] + "</td><td>" + end[i] + "</td><td>" + hour[i] + " Hs." + "</td><td><a href='javascript:showCarrousel(\"" + path[i] + "\")'><img src='" + my_path[i][0] + "' width='160' height='120' alt='Imágenes del Evento'></a></td><td><small>No Disponible</small></td></tr><tr>";
                     // Si es así, Muestro Evento Terminado y las entradas no estarán disponibles para la venta.
                 }
                 else // Si no.
                 {
-                    html += "<td>" + kind + "</td><td>" + evento[i] + "</td><td>" + desc[i] + "</td><td>" + price[i] + "</td><td>" + where[i] + "</td><td>" + start[i] + "</td><td>" + end[i] + "</td><td>" + hour[i] + " Hs." + "</td><td><a href='javascript:showCarrousel(\"" + path[i] + "\")'><img src='" + my_path[i][0] + "' width='160' height='120' alt='Imágenes del Evento'></a></td><td><a href='javascript:addToCart(\"" + id[i] + "-" + evento[i] + "-" + price[i] + "\")'><small class='btn btn-info' role='button'>Comprar Entrada</small></a></td></tr><tr>";
+                    html += "<td>" + kind + "</td><td>" + evento[i] + "</td><td>" + desc[i] + "</td><td>" + price[i] + " €</td><td>" + where[i] + "</td><td>" + start[i] + "</td><td>" + end[i] + "</td><td>" + hour[i] + " Hs." + "</td><td><a href='javascript:showCarrousel(\"" + path[i] + "\")'><img src='" + my_path[i][0] + "' width='160' height='120' alt='Imágenes del Evento'></a></td><td><a href='javascript:addToCart(\"" + id[i] + "-" + evento[i] + "-" + price[i] + " €\")'><small class='btn btn-info' role='button'>Comprar Entrada</small></a></td></tr><tr>";
                     // Muestro el evento.
                 }
             }
             else if (from == "comp") // Si la petición es del perfil empresa, muestro los eventos publicados con las entradas vendidas.
             {
-                html += "<td>" + kind[i] + "</td><td>" + title[i] + "</td><td>" + place[i] + "</td><td>" + start[i] + " " + hour[i] + "Hs." + "</td><td>" + price[i] + "</td><td>" + places[i] + "</td><td>" + sold[i] + "</td></tr><tr>";
+                html += "<td>" + kind[i] + "</td><td>" + title[i] + "</td><td>" + place[i] + "</td><td>" + start[i] + " " + hour[i] + "Hs." + "</td><td>" + price[i] + " €</td><td>" + places[i] + "</td><td>" + sold[i] + "</td></tr><tr>";
             }
             else // Si la peticion es del perfil de espectador, muestro las entradas compradas y los enlaces a los códigos QR.
             {
