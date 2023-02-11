@@ -304,91 +304,47 @@ function screenSize() // Función para dar el tamaño máximo de la pantalla a l
     var body = document.body, html2 = document.documentElement; // Asigno a la variable body el body y a html2 el contenido.
     var height = Math.max(body.scrollHeight, body.offsetHeight, html2.clientHeight, html2.scrollHeight, html2.offsetHeight); // Asigno a la variable height el valor máximo de la pantalla con todo el contenido.
 
-    if (page_top.offsetHeight < screen) // Si el tamaño vertical de la vista es menor que el tamaño vertical de la pantalla.
+    if (page_top.offsetHeight <= screen) // Si el tamaño vertical de la vista es menor que el tamaño vertical de la pantalla.
     {
-        page_top.style.height = screen + "px"; // Le asigno el tamaño de la pantalla a la vista 1, si es mayor lo dejo como está.
-    }
+        views(page_top, screen, height);
 
-    if (page_event != null) // Si existe el div view2
-    {
-        if (page_event.offsetHeight < screen) // Si el tamaño vertical de la vista es menor que el tamaño vertical de la pantalla.
+        if (page_event != null) // Si existe el div view2
         {
-            page_event.style.height = screen + "px"; // Le asigno el tamaño de la pantalla a la vista 2, si es mayor lo dejo como está.
-        }
-        if (view1 != null)
-        {
-            if (view1.offsetHeight < screen)
+            views(page_event, screen, height);
+            if (view1 != null)
             {
-                view1.style.height = screen + "px";
-            }
-            if (view2 != null)
-            {
-                if (view2.offsetHeight < screen)
+                views(view1, screen, height);
+                if (view2 != null)
                 {
-                    view2.style.height = screen + "px";
-                }
-                if (view3 != null)
-                {
-                    if (view3.offsetHeight < screen)
+                    views(view2, screen, height);
+                    if (view3 != null)
                     {
-                        view3.style.height = screen - 160 + "px";
+                        views(view3, screen, height);
                     }
                 }
+                
             }
-            
         }
     }
-    else // Si la vista 2 no existe.
-    {
-        view1.style.height = height - 80 + "px"; // Le asigno a la vista 1 el tamaño de todo el contenido de la pantalla menos 80 pixels.
-    }
+}
 
-    // var screenHeight = window.innerHeight; // Declaro la variable screenHeight y le asigno el tamaño interno disponible de la pantalla.
-    // if (document.title != "Bienvenidos a Ticket.es") // Verifico si no estoy en index.php
-    // {
-    //     if (document.title == "Procede al Pago de tus Entradas") // Si estoy en Pago de entradas
-    //     {
-    //         page_top.style.height = screenHeight - 190 + "px"; // Asigno el tamaño de la pantalla - 190 pixels a pagetop para ver el footer en la misma vista.
-    //     }
-    //     else // Si no.
-    //     {
-    //         var body = document.body,
-    //         html2 = document.documentElement;
-    //         var height = Math.max(body.scrollHeight, body.offsetHeight, html2.clientHeight, html2.scrollHeight, html2.offsetHeight); // Asigno a la varible height la altura de la pantalla con todo el contenido.
-    //         if (height <= screenHeight) // Si la página completa es de tamaño menor o igual al tamaño máximo de la vista.
-    //         {
-    //             if (view1 != null) // Verifico si existe la vista view1.
-    //             {
-    //                 page_top.style.height = screenHeight + "px"; // Doy el tamaño máximo a la primera vista que es page_top.
-    //                 view1.style.height = screenHeight - 190 + "px"; // Doy el tamaño - 190 pixels a view1, para ver el footer en la misma vista.
-    //             }
-    //             else // Si no existe view1
-    //             {
-    //                 page_top.style.height = screenHeight - 210 + "px"; // Doy el tamaño - 210 pixels a page_top, para ver el footer en la misma vista.
-    //             }
-    //         }
-    //         else // Si el contenido de la página es mayor al tamaño de la pantalla completa.
-    //         {
-    //             if (view1 != null) // Verifico si existe la vista view1.
-    //             {
-    //                 page_top.style.height = screenHeight + (height - screenHeight) + "px"; // Le asigno el espacio máximo + los pixeles necesarios para ver toda la página a page_top.
-    //                 view1.style.height = screenHeight - 190 + "px"; // Doy el tamaño - 190 pixels a view1, para ver el footer en la misma vista.
-    //             }
-    //             else // Si no existe view1.
-    //             {
-    //                 page_top.style.height = screenHeight + (height - screenHeight) + "px"; // Le asigno el espacio máximo + los pixeles necesarios para ver toda la página a page_top.
-    //             }
-    //         }
-    //     }
-    // }
-    // else // Si estoy en index.php
-    // {
-    //     page_top.style.height = screenHeight + "px"; // Le asigno el espacio máximo a la vista page_top.
-    //     page_event.style.height = screenHeight + "px"; // Le asigno el espacio máximo a la vista page_event.
-    //     view1.style.height = screenHeight + "px"; // Asigno el tamaño máximo de la pantalla a view1.
-    //     view2.style.height = screenHeight + "px"; // Asigno el tamaño máximo de la pantalla a view2.
-    //     view3.style.height = screenHeight - 190 + "px"; // Asigno el tamaño máximo de la pantalla - 190 px del footer a view3.
-    // }
+function views(view, size, bigsize)
+{
+    if (view <= size)
+    {
+        if (view == view3)
+        {
+            view.style.height = size - 160 + "px";
+        }
+        else
+        {
+            view.style.height = size + "px";
+        }
+    }
+    else
+    {
+        view.style.height = bigsize - 80 + "px";
+    }
 }
 
 function verify(code) // Función para validar las contraseñas de registro de espectador y empresa y las de modificación de ambos, recibe el código de empresa o de espectador.
