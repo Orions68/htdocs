@@ -153,7 +153,7 @@ include "includes/car_dialog.html"; // Diálogo cuando se agrega algo al carro.
                     </div>
                 </div>
                 <div id="view3">
-                    <br><br><br><br>
+                    <br><br><br><br><br><br>
                     <h2>Busca Los Eventos de donde Estes</h2>
                     <br>
                     <form action="" method="post" id="form">
@@ -182,6 +182,3 @@ include "includes/car_dialog.html"; // Diálogo cuando se agrega algo al carro.
 <?php
 include "includes/footer.html";
 ?>
-<script>screenSize();</script>
-</body>
-</html>

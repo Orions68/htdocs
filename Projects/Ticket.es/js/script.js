@@ -300,52 +300,95 @@ function screenSize() // Función para dar el tamaño máximo de la pantalla a l
     var view1 = document.getElementById("view1");
     var view2 = document.getElementById("view2");
     var view3 = document.getElementById("view3");
-    var screenHeight = window.innerHeight; // Declaro la variable screenHeight y le asigno el tamaño interno disponible de la pantalla.
-    if (document.title != "Bienvenidos a Ticket.es") // Verifico si no estoy en index.php
+    let screen = window.innerHeight; // Obtiene el tamaño vertical de la pantalla.
+    var body = document.body, html2 = document.documentElement; // Asigno a la variable body el body y a html2 el contenido.
+    var height = Math.max(body.scrollHeight, body.offsetHeight, html2.clientHeight, html2.scrollHeight, html2.offsetHeight); // Asigno a la variable height el valor máximo de la pantalla con todo el contenido.
+
+    if (page_top.offsetHeight < screen) // Si el tamaño vertical de la vista es menor que el tamaño vertical de la pantalla.
     {
-        if (document.title == "Procede al Pago de tus Entradas") // Si estoy en Pago de entradas
+        page_top.style.height = screen + "px"; // Le asigno el tamaño de la pantalla a la vista 1, si es mayor lo dejo como está.
+    }
+
+    if (page_event != null) // Si existe el div view2
+    {
+        if (page_event.offsetHeight < screen) // Si el tamaño vertical de la vista es menor que el tamaño vertical de la pantalla.
         {
-            page_top.style.height = screenHeight - 190 + "px"; // Asigno el tamaño de la pantalla - 190 pixels a pagetop para ver el footer en la misma vista.
+            page_event.style.height = screen + "px"; // Le asigno el tamaño de la pantalla a la vista 2, si es mayor lo dejo como está.
         }
-        else // Si no.
+        if (view1 != null)
         {
-            var body = document.body,
-            html2 = document.documentElement;
-            var height = Math.max(body.scrollHeight, body.offsetHeight, html2.clientHeight, html2.scrollHeight, html2.offsetHeight); // Asigno a la varible height la altura de la pantalla con todo el contenido.
-            if (height <= screenHeight) // Si la página completa es de tamaño menor o igual al tamaño máximo de la vista.
+            if (view1.offsetHeight < screen)
             {
-                if (view1 != null) // Verifico si existe la vista view1.
+                view1.style.height = screen + "px";
+            }
+            if (view2 != null)
+            {
+                if (view2.offsetHeight < screen)
                 {
-                    page_top.style.height = screenHeight + "px"; // Doy el tamaño máximo a la primera vista que es page_top.
-                    view1.style.height = screenHeight - 190 + "px"; // Doy el tamaño - 190 pixels a view1, para ver el footer en la misma vista.
+                    view2.style.height = screen + "px";
                 }
-                else // Si no existe view1
+                if (view3 != null)
                 {
-                    page_top.style.height = screenHeight - 210 + "px"; // Doy el tamaño - 210 pixels a page_top, para ver el footer en la misma vista.
+                    if (view3.offsetHeight < screen)
+                    {
+                        view3.style.height = screen - 160 + "px";
+                    }
                 }
             }
-            else // Si el contenido de la página es mayor al tamaño de la pantalla completa.
-            {
-                if (view1 != null) // Verifico si existe la vista view1.
-                {
-                    page_top.style.height = screenHeight + (height - screenHeight) + "px"; // Le asigno el espacio máximo + los pixeles necesarios para ver toda la página a page_top.
-                    view1.style.height = screenHeight - 190 + "px"; // Doy el tamaño - 190 pixels a view1, para ver el footer en la misma vista.
-                }
-                else // Si no existe view1.
-                {
-                    page_top.style.height = screenHeight + (height - screenHeight) + "px"; // Le asigno el espacio máximo + los pixeles necesarios para ver toda la página a page_top.
-                }
-            }
+            
         }
     }
-    else // Si estoy en index.php
+    else // Si la vista 2 no existe.
     {
-        page_top.style.height = screenHeight + "px"; // Le asigno el espacio máximo a la vista page_top.
-        page_event.style.height = screenHeight + "px"; // Le asigno el espacio máximo a la vista page_event.
-        view1.style.height = screenHeight + "px"; // Asigno el tamaño máximo de la pantalla a view1.
-        view2.style.height = screenHeight + "px"; // Asigno el tamaño máximo de la pantalla a view2.
-        view3.style.height = screenHeight - 190 + "px"; // Asigno el tamaño máximo de la pantalla - 190 px del footer a view3.
+        view1.style.height = height - 80 + "px"; // Le asigno a la vista 1 el tamaño de todo el contenido de la pantalla menos 80 pixels.
     }
+
+    // var screenHeight = window.innerHeight; // Declaro la variable screenHeight y le asigno el tamaño interno disponible de la pantalla.
+    // if (document.title != "Bienvenidos a Ticket.es") // Verifico si no estoy en index.php
+    // {
+    //     if (document.title == "Procede al Pago de tus Entradas") // Si estoy en Pago de entradas
+    //     {
+    //         page_top.style.height = screenHeight - 190 + "px"; // Asigno el tamaño de la pantalla - 190 pixels a pagetop para ver el footer en la misma vista.
+    //     }
+    //     else // Si no.
+    //     {
+    //         var body = document.body,
+    //         html2 = document.documentElement;
+    //         var height = Math.max(body.scrollHeight, body.offsetHeight, html2.clientHeight, html2.scrollHeight, html2.offsetHeight); // Asigno a la varible height la altura de la pantalla con todo el contenido.
+    //         if (height <= screenHeight) // Si la página completa es de tamaño menor o igual al tamaño máximo de la vista.
+    //         {
+    //             if (view1 != null) // Verifico si existe la vista view1.
+    //             {
+    //                 page_top.style.height = screenHeight + "px"; // Doy el tamaño máximo a la primera vista que es page_top.
+    //                 view1.style.height = screenHeight - 190 + "px"; // Doy el tamaño - 190 pixels a view1, para ver el footer en la misma vista.
+    //             }
+    //             else // Si no existe view1
+    //             {
+    //                 page_top.style.height = screenHeight - 210 + "px"; // Doy el tamaño - 210 pixels a page_top, para ver el footer en la misma vista.
+    //             }
+    //         }
+    //         else // Si el contenido de la página es mayor al tamaño de la pantalla completa.
+    //         {
+    //             if (view1 != null) // Verifico si existe la vista view1.
+    //             {
+    //                 page_top.style.height = screenHeight + (height - screenHeight) + "px"; // Le asigno el espacio máximo + los pixeles necesarios para ver toda la página a page_top.
+    //                 view1.style.height = screenHeight - 190 + "px"; // Doy el tamaño - 190 pixels a view1, para ver el footer en la misma vista.
+    //             }
+    //             else // Si no existe view1.
+    //             {
+    //                 page_top.style.height = screenHeight + (height - screenHeight) + "px"; // Le asigno el espacio máximo + los pixeles necesarios para ver toda la página a page_top.
+    //             }
+    //         }
+    //     }
+    // }
+    // else // Si estoy en index.php
+    // {
+    //     page_top.style.height = screenHeight + "px"; // Le asigno el espacio máximo a la vista page_top.
+    //     page_event.style.height = screenHeight + "px"; // Le asigno el espacio máximo a la vista page_event.
+    //     view1.style.height = screenHeight + "px"; // Asigno el tamaño máximo de la pantalla a view1.
+    //     view2.style.height = screenHeight + "px"; // Asigno el tamaño máximo de la pantalla a view2.
+    //     view3.style.height = screenHeight - 190 + "px"; // Asigno el tamaño máximo de la pantalla - 190 px del footer a view3.
+    // }
 }
 
 function verify(code) // Función para validar las contraseñas de registro de espectador y empresa y las de modificación de ambos, recibe el código de empresa o de espectador.
@@ -558,7 +601,7 @@ function change(page, qtty, from) // Función que muestra los resultados de a 5 
             }
             else // Si la peticion es del perfil de espectador, muestro las entradas compradas y los enlaces a los códigos QR.
             {
-                html += "<td>" + kind[i] + "</td><td>" + title[i] + "</td><td>" + qtties[i] + "</td><td>" + payed[i] + "</td><td>" + date[i] + "</td><td>" + start[i] + " " + hour[i] + "Hs." + "</td><td><a href='" + ruta[i] + "' target='_blank'>Descarga tu QR</a></td></tr><tr>";
+                html += "<td>" + kind[i] + "</td><td>" + title[i] + "</td><td>" + qtties[i] + "</td><td>" + payed[i] + " €</td><td>" + date[i] + "</td><td>" + start[i] + " " + hour[i] + "Hs." + "</td><td><a href='" + ruta[i] + "' target='_blank'>Descarga tu QR</a></td></tr><tr>";
             }
         }
         else // Sí i supera a la cantidad de eventos, ya que estoy mostrando los resultados de 5 en 5 y si hay 8 eventos en la segunda página solo muestro 3.

@@ -9,8 +9,6 @@ $title = "Ticket.es - Entrada de Espectador";
 include "includes/header.php";
 include "includes/mod-esp-log.html";
 include "includes/car_dialog.html"; // Diálogo cuando se agrega algo al carro.
-// include "includes/nav-esp.html";
-
 include "includes/showLogin.php";
 $ok = false;
 include "includes/nav-esp.html";

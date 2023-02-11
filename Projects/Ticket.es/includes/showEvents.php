@@ -99,7 +99,7 @@ function lookEvents($conn, $tipo, $lugar) // Esta función hace la consulta a la
     global $ok, $i, $k, $kinds, $event, $desc, $path, $id, $where, $price, $start, $end, $hour, $places, $sold; // Hago globales todas las variables que necesita la función.
     if ($tipo == "") // Verifico si la variable $tipo está vacía
     {
-        $sql = "SELECT * FROM details WHERE id IN (SELECT MAX(id) FROM details GROUP BY kind);"; // Si $tipo está vacía, consulto a la base de datos todos los resultados agrupados por tipo de evento, se llamó desde index.php.
+        $sql = "SELECT * FROM details INNER JOIN events WHERE details.id IN (SELECT MAX(id) FROM details GROUP BY kind) AND events.id=details.id_event AND events.start > NOW();"; // Si $tipo está vacía, consulto a la base de datos todos los resultados agrupados por tipo de evento, se llamó desde index.php.
     }
     else // Si la variable $tipo tiene algo.
     {
@@ -111,7 +111,7 @@ function lookEvents($conn, $tipo, $lugar) // Esta función hace la consulta a la
     {
         while ($row = $stmt->fetch(PDO::FETCH_OBJ)) // Cargo en la variable $row todos los campos del resultado de la consulta.
         {
-            if ($sql == "SELECT * FROM details WHERE id IN (SELECT MAX(id) FROM details GROUP BY kind);") // Si la consulta fue SELECT *, llamada desde index.php.
+            if ($sql == "SELECT * FROM details INNER JOIN events WHERE details.id IN (SELECT MAX(id) FROM details GROUP BY kind) AND events.id=details.id_event AND events.start > NOW();") // Si la consulta fue SELECT *, llamada desde index.php.
             {
                 $kinds[$i] = $row->kind; // Asigno al array $kinds[$i] la fila $row->kind, que contiene los tipos de eventos de los que se trata.
             }
