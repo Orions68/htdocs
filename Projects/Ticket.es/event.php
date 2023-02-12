@@ -29,6 +29,8 @@ else
 }
 ?>
 <section class="container-fluid pt-3">
+<div id="pc"></div>
+<div id="mobile"></div>
     <div class="row">
         <div class="col-md-10">
             <div id="page_top">

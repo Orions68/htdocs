@@ -582,7 +582,7 @@ function change(page, qtty, from) // Función que muestra los resultados de a 5 
                 }
                 else // Si no.
                 {
-                    html += "<td>" + kind + "</td><td>" + evento[i] + "</td><td>" + desc[i] + "</td><td>" + price[i] + " €</td><td>" + where[i] + "</td><td>" + start[i] + "</td><td>" + end[i] + "</td><td>" + hour[i] + " Hs." + "</td><td><a href='javascript:showCarrousel(\"" + path[i] + "\")'><img src='" + my_path[i][0] + "' width='160' height='120' alt='Imágenes del Evento'></a></td><td><a href='javascript:addToCart(\"" + id[i] + "-" + evento[i] + "-" + price[i] + " €\")'><small class='btn btn-info' role='button'>Comprar Entrada</small></a></td></tr><tr>";
+                    html += "<td>" + kind + "</td><td>" + evento[i] + "</td><td>" + desc[i] + "</td><td>" + price[i] + " €</td><td>" + where[i] + "</td><td>" + start[i] + "</td><td>" + end[i] + "</td><td>" + hour[i] + " Hs." + "</td><td><a href='javascript:showCarrousel(\"" + path[i] + "\")'><img src='" + my_path[i][0] + "' width='160' height='120' alt='Imágenes del Evento'></a></td><td><a href='javascript:addToCart(\"" + id[i] + "-" + evento[i] + "-" + price[i] + "\")'><small class='btn btn-info' role='button'>Comprar Entrada</small></a></td></tr><tr>";
                     // Muestro el evento.
                 }
             }
