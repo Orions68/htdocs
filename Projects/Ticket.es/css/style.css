@@ -19,7 +19,7 @@ tr, th, td /* A los títulos, filas y columnas de la tabla les doy borde de colo
 
 span
 {
-    background-color: rgba(80,80,80,.5) !important; /* los span tienen el fondo gris intermedio transparente. */
+    background-color: rgba(200,200,200,.5) !important; /* los span tienen el fondo gris intermedio transparente. */
 }
 
 .mysize /* Esta clase es de las imágenes del script showEvents.php que muestra los eventos variados en la página index.php y en la página login.php cuando un especatdor está logueado. */

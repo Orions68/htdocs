@@ -43,10 +43,10 @@ if (isset($_POST["article0"]))
                                     <?php
                                     for ($i = 0; $i < $event_size; $i++)
                                     {
-                                        echo '<p class="mb-0"><span class="fw-bold">Entradas: </span><span class="c-green">' . $event_data[$i][1] . '</span></p>
-                                        <p class="mb-0"><span class="fw-bold">Precio: </span><span class="c-green">' . $event_data[$i][2] . '</span></p>
-                                        <p class="mb-0"><span class="fw-bold">Cantidad: </span><span class="c-green">' . $qtty[$i] . '</span></p>
-                                        <p class="mb-0"><span class="fw-bold">Total a pagar: </span><span class="c-green">' . $event_data[$i][2] * $qtty[$i] . '</span></p>
+                                        echo '<p class="mb-0"><span class="fw-bold">Entradas: </span><span>' . $event_data[$i][1] . '</span></p>
+                                        <p class="mb-0"><span class="fw-bold">Precio: </span><span>' . $event_data[$i][2] . ' €</span></p>
+                                        <p class="mb-0"><span class="fw-bold">Cantidad: </span><span>' . $qtty[$i] . '</span></p>
+                                        <p class="mb-0"><span class="fw-bold">Total a pagar: </span><span>' . number_format((float)$event_data[$i][2] * $qtty[$i], 2, ',', '.') . ' €</span></p>
                                         <br>';
                                         $total += $event_data[$i][2] * $qtty[$i];
                                     }

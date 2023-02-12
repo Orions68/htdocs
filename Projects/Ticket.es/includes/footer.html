@@ -37,5 +37,9 @@
 <script>screenSize();</script>
 <!-- <script>checkTitle()</script> Llamo a la función checkTitle() para esconder el botón del carro de la compra. -->
 <script>resolution();</script>
+<script>
+    window.addEventListener('resize', resolution);
+    resolution();
+</script>
 </body>
 </html>

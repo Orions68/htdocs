@@ -3,8 +3,8 @@ if (json_decode(file_get_contents('php://input'), true)) // Esta linea es usada 
 {
 	$_POST = json_decode(file_get_contents('php://input'), true); // Asigna los datos a la variable $_POST de tipo array.
 }
-$n = 0; // la variable $n se utiliza para multiples entradas.
-if (isset($_POST["id"])) // Verifico si ha llegado algo por POST en el array $_POST["user"].
+
+if (isset($_POST["id"])) // Verifico si ha llegado algo por POST en el array $_POST["id"].
 {
 	$id = $_POST["id"]; // Si hay datos, asigna a la variable $id el contenido del array $_POST["id"].
 	$data = $_POST["data"]; // Hace lo mismo con el contenido de $_POST["data"] en la variable $data.

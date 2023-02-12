@@ -9,6 +9,7 @@ include "includes/header.php";
 if (isset($_SESSION["id"]))
 {
     include "includes/nav-esp.html";
+    include "includes/nav-mob-esp.html";
     $id = $_SESSION["id"]; // Asigno a $id el valor de la sesión id.
     $sql = "SELECT name, path FROM clients WHERE id='$id';"; // Preparo la consulta buscando solo por la id.
     $stmt = $conn->prepare($sql);
@@ -26,6 +27,7 @@ if (isset($_SESSION["id"]))
 else
 {
     include "includes/nav.html";
+    include "includes/nav-mob.html";
 }
 include "includes/modal2.html";
 include "includes/car.html"; // Carro de la compra.

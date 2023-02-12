@@ -474,6 +474,24 @@ function goThere() // Cuando cambia el selector del menú para Móvil.
     var change = document.getElementById("change").value; // Change obtiene el valor en el selector.
     switch(change)
     {
+        case "page_event":
+            window.open("index.php#page_event", "_self");
+            break;
+        case "view1":
+            window.open("index.php#view1", "_self");
+            break;
+        case "view2":
+            window.open("index.php#view2", "_self");
+            break;
+        case "view3":
+            window.open("index.php#view3", "_self");
+            break;
+        case "endsession":
+            window.open("endsession.php", "_self");
+            break;
+        case "contact":
+            window.open("contact.php", "_self");
+            break;
         default :
             window.open("index.php#page_top", "_self");
     }

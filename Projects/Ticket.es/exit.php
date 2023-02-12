@@ -32,6 +32,8 @@ if (isset($_SESSION["id"])) // Si está iniciada la session de espectador.
 }
 ?>
 <section class='container-fluid pt-3'>
+<div id="pc"></div>
+<div id="mobile"></div>
     <div class='row'>
         <div class='col-sm-1'></div>
             <div class='col-sm-10'>
