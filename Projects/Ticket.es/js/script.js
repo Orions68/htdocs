@@ -492,6 +492,9 @@ function goThere() // Cuando cambia el selector del menú para Móvil.
         case "contact":
             window.open("contact.php", "_self");
             break;
+        case "empresalogin":
+            window.open("empresalogin.php#page_top", "_self");
+            break;
         default :
             window.open("index.php#page_top", "_self");
     }
