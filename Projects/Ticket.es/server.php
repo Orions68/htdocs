@@ -1,7 +1,7 @@
 <?php
 if (json_decode(file_get_contents('php://input'), true)) // Esta linea es usada por IOS, la app para iPhone, android no la necesita, si el script está recibiendo datos, ya sea por GET o por POST.
 {
-	$_POST = json_decode(file_get_contents('php://input'), true); // Asigna los datos a la variable $_POST de tipo array.
+        $_POST = json_decode(file_get_contents('php://input'), true); // Asigna los datos a la variable $_POST de tipo array.
 }
 
 if (isset($_POST["id"])) // Verifico si ha llegado algo por POST en el array $_POST["id"].
@@ -12,10 +12,10 @@ if (isset($_POST["id"])) // Verifico si ha llegado algo por POST en el array $_P
     if (!is_dir("Tickets/" . $client))
     {
         mkdir("Tickets/" . $client); // Crea la carpeta Tickets/id del cliente/id del evento.
-		if (!is_dir("Tickets/" . $client . "/" . $id))
-		{
-			mkdir("Tickets/" . $client . "/" . $id);
-		}
+    }
+    if (!is_dir("Tickets/" . $client . "/" . $id))
+    {
+        mkdir("Tickets/" . $client . "/" . $id);
     }
 	$name = "Tickets/" . $client . "/" . $id . "/tickets.txt"; // Asigna a la variable $name un nombre de archivo "Tickets/id cliente/id evento/tickets.txt".
 	$file = fopen($name, "w") or die("Unable to open file!"); // Crea un archivo para escribir en él, con el nombre del contenido de la variable $name, dentro de la carpeta Tickets...
