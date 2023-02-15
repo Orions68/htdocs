@@ -56,6 +56,8 @@ $time = $row->time;
                             </div></div>
                         </div>
                         <a id="image0" download="Factura Nº ' . $id . '.png"></a>
+						<br><br>
+						<button onclick="pdfDown(0)" class="btn btn-secondary btn-lg">Descarga la Factura en PDF</button>
                         <br><br><br>
                         <div class="row">
                         <div class="col-md-4">
