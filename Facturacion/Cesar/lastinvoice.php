@@ -61,10 +61,10 @@ $time = $row->time;
                         <br><br><br>
                         <div class="row">
                         <div class="col-md-4">
-                        <button onclick="printIt(-1)" style="width:160px; height:80px;" class="btn btn-primary">Imprimir Ticket</button>
+                        <button onclick="printIt(-1)" style="width:160px; height:80px;" class="btn btn-primary">Imprime la Factura</button>
                         </div>
                         <div class="col-md-6">
-                        <button onclick="window.open(\'saveIt.php?id=' . $id . '\', \'_blank\')" style="width:160px; height:80px;" class="btn btn-info">Guardar Factura en Exel</button>
+                        <button onclick="window.open(\'saveIt.php?id=' . $id . '\', \'_blank\')" style="width:160px; height:80px;" class="btn btn-info">Guarda la Factura en Exel</button>
                         <script>capture(0);</script>
                         </div>
                         </div>';
