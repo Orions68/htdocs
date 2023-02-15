@@ -18,7 +18,7 @@ function pdfDown(number)
     const image = document.getElementById("img" + number); // Div con ID printable0, contiene la factura.
 
     var doc = new jsPDF();
-    doc.addImage(image, 'png', 10, 10, 240, 120, '', 'FAST');
+    doc.addImage(image, 'png', 10, 10, 240, 60, '', 'FAST');
     doc.save();
 }
 

@@ -92,7 +92,7 @@ include "includes/nav-mob-index.html";
                             <!-- <form action="lastinvoice.php" method="post" target="_blank"> -->
                                 <br><br>
                                 <!-- <input type="submit" value="Muestra la Última Factura" class="btn btn-info btn-lg"> -->
-                                <button class="btn btn-info btn-lg" onclick="window.open('lastinvoice.php', '_blank')">Muestra la Última Factura</button>
+                                <button class="btn btn-success btn-lg" onclick="window.open('lastinvoice.php', '_blank')">Muestra la Última Factura</button>
 							<!-- </form> -->
 							<br><br>
 							<div>

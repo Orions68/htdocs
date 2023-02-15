@@ -108,7 +108,7 @@ if (isset($_POST["date"]))
                 }
 				?>
                 <br><br>
-                <button class="btn btn-danger" onclick="window.close()">Cierra Esta Ventana</button>
+                <button class="btn btn-danger btn-lg" onclick="window.close()">Cierra Esta Ventana</button>
                 <br><br><br><br><br>
 				</div>
             </div>
