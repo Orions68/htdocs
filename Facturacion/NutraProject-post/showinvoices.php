@@ -92,6 +92,8 @@ include "includes/function.php";
                             </div></div>
                         </div>
                         <a id="image' . $j . '" download="Factura a: ' . $client . '.png"></a>
+                        <br><br>
+                        <button onclick="pdfDown(' . $j . ')" class="btn btn-secondary btn-lg">Descarga la Factura en PDF</button>
                         <br><br><br>
                         <div class="row">
                             <div class="col-md-4">

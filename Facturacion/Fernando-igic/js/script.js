@@ -13,6 +13,15 @@ function printIt(number)
     win.document.write('<img src="' + src + '" onload="window.print(); window.close();">'); // Escribo en la ventana abierta un elemento img con la imagen a imprimir y la envía a la impresora y al terminar cierra la ventana.
 }
 
+function pdfDown(number)
+{
+    const image = document.getElementById("img" + number); // Div con ID printable0, contiene la factura.
+
+    var doc = new jsPDF();
+    doc.addImage(image, 'png', 10, 10, 240, 120, '', 'FAST');
+    doc.save();
+}
+
 function prices(howmany) // Función para poner los repuestos y sus precios usados en el trabajo, según la cantidad recibida howmany.
 {
     let container = document.getElementById("prices"); // Asigna a container el elemento con ID prices.

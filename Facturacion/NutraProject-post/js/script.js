@@ -533,6 +533,15 @@ function capture(number)
     });
 }
 
+function pdfDown(number)
+{
+    const image = document.getElementById("img" + number); // Div con ID printable0, contiene la factura.
+
+    var doc = new jsPDF();
+    doc.addImage(image, 'png', 10, 10, 240, 120, '', 'FAST');
+    doc.save();
+}
+
 function totNumPages() // Función para la paginación, calcula el número total de páginas según la cantidad de resultados dividido por la cantidad a mostrar.
 {
     return Math.ceil(window.length / window.qtty); // Calcula la cantidad de páginas que habrá, divide la cantidad de eventos por 6 resultados a mostrar por página.
