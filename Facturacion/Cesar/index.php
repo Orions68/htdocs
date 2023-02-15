@@ -94,7 +94,7 @@ include "inc/nav-mob-index.html";
                             <h4>Ver la Última Factura Ingresada</h4>
                             <br><br>
                             <form action="lastinvoice.php" method="post" target="_blank">
-									<input type="submit" value="Muestrame la Última Factura" class="btn btn-info btn-lg">
+									<input type="submit" value="Muestrame la Última Factura" class="btn btn-success btn-lg">
 							</form>
                             <br><br>
 							<div>
