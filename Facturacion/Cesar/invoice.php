@@ -41,9 +41,13 @@ if (isset($_POST["client"]))
                 <div id="view1">
 					<br><br>
 					<?php
-                    $sql = "INSERT INTO invoice VALUES(:id, :client, :job, :price, :totaligic, :date, :time)";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->execute(array(':id' => null, ':client' => $client, ':job' => $job, ':price' => $totaligic, ':totaligic' => $totaligic, ':date' => $date, ':time' => $time));
+                    if (!isset($_SESSION["input"]))
+                    {
+                        $_SESSION["input"] = 0;
+                        $sql = "INSERT INTO invoice VALUES(:id, :client, :job, :price, :totaligic, :date, :time)";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute(array(':id' => null, ':client' => $client, ':job' => $job, ':price' => $totaligic, ':totaligic' => $totaligic, ':date' => $date, ':time' => $time));
+                    }
                     echo "<script>toast(0, 'Factura a " . $client . "', ' De Monto " . $totaligic . " Agregada a la Base de Datos.');</script>";
 					?>
 				</div>

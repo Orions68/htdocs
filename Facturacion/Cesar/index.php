@@ -12,7 +12,7 @@ include "inc/nav-mob-index.html";
                     <br><br><br><br>
                     <h1>Facturación de Servicios Informáticos</h1>
                     <br><br>
-                    <form id="form" action="invoice.php" method="post" target="_blank">
+                    <form id="form" action="invoice.php" method="post" target="_self">
                         <label><input type="text" name="client"> Datos del Cliente, Si lo Dejas en Blanco se Facturará a Consumidor Final</label>
                         <br><br>
                         <label><input type="text" name="job" required> Breve Descripción del Trabajo</label>

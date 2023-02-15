@@ -138,70 +138,69 @@ include "inc/header.php";
     <div class="row">
         <div class="col-md-1" style="width:3%;"></div>
             <div class="col-md-10">
-            <div id="view1">
-                <div class="row">
-                    <div class="col-md-7">
-                        Facturas: <?php echo " " . $date; ?>º Trimestre del año: <?php echo " " . $year; ?> César Osvaldo Matelat Borneo - 42268151Q Calle Fermín Morín Nº 2, 38007, Santa Cruz de Tenerife
+                <div id="view1">
+                    <div class="row">
+                        <div class="col-md-7">
+                            Facturas: <?php echo " " . $date; ?>º Trimestre del año: <?php echo " " . $year; ?> César Osvaldo Matelat Borneo - 42268151Q Calle Fermín Morín Nº 2, 38007, Santa Cruz de Tenerife
+                        </div>
+                        <div class="col-md-2">
+                        <form method="post">
+                            <input type="hidden" name="date" value="<?php echo $date; ?>">
+                            <input type="hidden" name="year" value="<?php echo $year; ?>">
+                            <select name="file_type" class="form-control input-sm">
+                                <option value="Xlsx">Xlsx</option>
+                                <option value="Csv">Csv</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="submit" name="export" class="btn btn-primary btn-lg" value="Descarga el Informe" />
+                        </div>
                     </div>
-                    <div class="col-md-2">
-                    <form method="post">
-                        <input type="hidden" name="date" value="<?php echo $date; ?>">
-                        <input type="hidden" name="year" value="<?php echo $year; ?>">
-                        <select name="file_type" class="form-control input-sm">
-                            <option value="Xlsx">Xlsx</option>
-                            <option value="Csv">Csv</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <input type="submit" name="export" class="btn btn-primary btn-lg" value="Descarga el Informe" />
-                    </div>
-                </div>
-                </form>
-                <br>
-                <table>
-                    <tr>
-                    <th>Nº de factura</th>
-                    <th>Cliente</th>
-                    <th>Servicio</th>
-                    <th>Hora</th>
-                    <th>Día</th>
-                    <th>Base Imponible</th>
-                    <th>I.G.I.C.</th>
-                    <th>Total + I.G.I.C.</th>
-                    </tr>
-                <?php
+                    </form>
+                    <br>
+                    <table>
+                        <tr>
+                        <th>Nº de factura</th>
+                        <th>Cliente</th>
+                        <th>Servicio</th>
+                        <th>Hora</th>
+                        <th>Día</th>
+                        <th>Base Imponible</th>
+                        <th>I.G.I.C.</th>
+                        <th>Total + I.G.I.C.</th>
+                        </tr>
+                    <?php
 
-                foreach($result as $row)
-                {
-                    $id = $row["id"];
-                    $client = $row["client"];
-                    $service = $row["job"];
-                    $price = $row["price"];
-                    $totaligic = $row["totaligic"];
-                    $mydate = $row["date"];
-                    $time = $row["time"];
+                    foreach($result as $row)
+                    {
+                        $id = $row["id"];
+                        $client = $row["client"];
+                        $service = $row["job"];
+                        $price = $row["price"];
+                        $totaligic = $row["totaligic"];
+                        $mydate = $row["date"];
+                        $time = $row["time"];
 
-                    echo '<tr>
-                    <td>' . $id . '</td>
-                    <td>' . $client . '</td>
-                    <td>' . $service . '</td>
-                    <td>' . $time . '</td>
-                    <td>' . $mydate . '</td>
-                    <td>' . number_format((float)$price, 2, ',', '.') . ' €</td>
-                    <td>7%</td>
-                    <td>' . number_format((float)$row["totaligic"], 2, ',', '.') . ' €</td>
-                    </tr>';
-                }
-                ?>
-                </table>
+                        echo '<tr>
+                        <td>' . $id . '</td>
+                        <td>' . $client . '</td>
+                        <td>' . $service . '</td>
+                        <td>' . $time . '</td>
+                        <td>' . $mydate . '</td>
+                        <td>' . number_format((float)$price, 2, ',', '.') . ' €</td>
+                        <td>Excento</td>
+                        <td style="text-align: right;">' . number_format((float)$row["totaligic"], 2, ',', '.') . ' €</td>
+                        </tr>';
+                    }
+                    ?>
+                    </table>
                 </div>
             </div>
         <div class="col-md-1" style="width:3%;"></div>
     </div>
 </section>
-<br><br>
-<button class="btn btn-danger" onclick="window.close()">Cierra Esta Ventana</button>
-    <br><br><br><br><br>
+<button class="btn btn-danger btn-lg" onclick="window.close()">Cierra Esta Ventana</button>
+    <br><br><br><br><br><br><br>
 <?php
 include "inc/footer.html";
 ?>

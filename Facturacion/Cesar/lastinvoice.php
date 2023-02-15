@@ -3,6 +3,10 @@ include "inc/conn.php";
 $title = "Última Factura";
 include "inc/header.php";
 
+if (isset($_SESSION["input"]))
+{
+    session_unset();
+}
 $stmt = $conn->prepare("SET lc_time_names = 'es_ES'");
 $stmt->execute();
 $sql = "SELECT *, DATE_FORMAT(date,'%d %M %Y') as date FROM invoice ORDER BY id desc limit 1";
