@@ -3,6 +3,10 @@ $title = "Pagina Principal de César Matelat";
 include "inc/header.php";
 include "inc/nav-index.html";
 include "inc/nav-mob-index.html";
+if (isset($_SESSION["input"]))
+{
+    session_unset();
+}
 ?>
 <section class="container-fluid pt-3">
     <div class="row">

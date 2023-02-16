@@ -43,7 +43,7 @@ if (isset($_POST["client"]))
 					<?php
                     if (!isset($_SESSION["input"]))
                     {
-                        $_SESSION["input"] = 0;
+                        $_SESSION["input"] = true;
                         $sql = "INSERT INTO invoice VALUES(:id, :client, :job, :price, :totaligic, :date, :time)";
                         $stmt = $conn->prepare($sql);
                         $stmt->execute(array(':id' => null, ':client' => $client, ':job' => $job, ':price' => $totaligic, ':totaligic' => $totaligic, ':date' => $date, ':time' => $time));
