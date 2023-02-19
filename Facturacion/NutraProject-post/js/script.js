@@ -4,40 +4,29 @@ function screen() // Establece el tamaño de las vistas en la pantalla.
     let view2 = document.getElementById("view2");
     let view3 = document.getElementById("view3");
     let view4 = document.getElementById("view4");
-    let screen = window.innerHeight; // Obtiene el tamaño vertical de la pantalla.
-    var body = document.body, html2 = document.documentElement; // Asigno a la variable body el body y a html2 el contenido.
-    var height = Math.max(body.scrollHeight, body.offsetHeight, html2.clientHeight, html2.scrollHeight, html2.offsetHeight); // Asigno a la variable height el valor máximo de la pantalla con todo el contenido.
+    let viewheight = window.innerHeight; // Obtiene el tamaño vertical de la pantalla.
 
-    if (view1.offsetHeight < screen) // Si el tamaño vertical de la vista es menor que el tamaño vertical de la pantalla.
-    {
-        view1.style.height = screen + "px"; // Le asigno el tamaño de la pantalla a la vista 1, si es mayor lo dejo como está.
-    }
+    views(view1, view1.offsetHeight, viewheight);
 
     if (view2 != null) // Si existe el div view2
     {
-        if (view2.offsetHeight < screen) // Si el tamaño vertical de la vista es menor que el tamaño vertical de la pantalla.
-        {
-            view2.style.height = screen + "px"; // Le asigno el tamaño de la pantalla a la vista 2, si es mayor lo dejo como está.
-        }
+        views(view2, view2.offsetHeight, viewheight);
         if (view3 != null)
         {
-            if (view3.offsetHeight < screen)
-            {
-                view3.style.height = screen + "px";
-            }
+            views(view3, view3.offsetHeight, viewheight);
             if (view4 != null)
             {
-                if (view4.offsetHeight < screen)
-                {
-                    view4.style.height = screen - 200 + "px";
-                }
-            }
-            
+                views(view4, view4.offsetHeight, viewheight);
+            }   
         }
     }
-    else // Si la vista 2 no existe.
+}
+
+function views(view, heights, viewheight)
+{
+    if (heights < viewheight)
     {
-        view1.style.height = height - 80 + "px"; // Le asigno a la vista 1 el tamaño de todo el contenido de la pantalla menos 80 pixels.
+        view.style.height = viewheight + "px";
     }
 }
 

@@ -204,8 +204,15 @@
 			var screenHeight = window.innerHeight; // Declaro la variable screenHeight y le asigno el tamaño interno disponible de la pantalla.
 
 			view1.style.height = screenHeight + "px"; // Asigno el tamaño máximo de la pantalla a view1.
-			view2.style.height = screenHeight + "px"; // Asigno el tamaño máximo de la pantalla a view2.
-			view3.style.height = screenHeight - 200 + "px"; // Asigno el tamaño máximo de la pantalla a view3 menos 200PX.
+            if (innerWidth < 965)
+            {
+                view2.style.height = screenHeight + 240 + "px"; // Asigno el tamaño máximo de la pantalla a view2.
+            }
+            else
+            {
+			    view2.style.height = screenHeight + "px"; // Asigno el tamaño máximo de la pantalla a view2.
+            }
+			view3.style.height = screenHeight + "px"; // Asigno el tamaño máximo de la pantalla a view3 menos 200PX.
 		}
 
 		function resolution() // Esta función comprueba si el ancho de la pantalla es de Ordenador o de Teléfono.
