@@ -24,7 +24,7 @@ $time = $row->time;
     <div class="row">
 	<div id="pc"></div>
 	<div id="mobile"></div>
-        <div class="col-md-1" style="width: 2%;"></div>
+        <div class="col-md-1" style="width: 3%;"></div>
             <div class="col-md-10">
                 <div id="view1">
 					<br><br>
@@ -77,14 +77,15 @@ $time = $row->time;
                     </div></div>
 					</div>
                     <a id="image0" download="Factura Nº ' . $id . '.png"></a>
-                    <br><br>
-                    <button onclick="pdfDown(0)" class="btn btn-secondary btn-lg">Descarga la Factura en PDF</button>
-                    <br><br><br>
+                    <br><br><br><br>
                         <div class="row">
                         <div class="col-md-4">
                         <button onclick="printIt(-1)" style="width:160px; height:80px;" class="btn btn-primary">Imprime la Factura</button>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
+                        <button onclick="pdfDown(0)" class="btn btn-secondary btn-lg">Descarga la Factura en PDF</button>
+                        </div>
+                        <div class="col-md-3">
                         <button onclick="window.open(\'saveIt.php?id=' . $id . '\', \'_blank\')" style="width:160px; height:80px;" class="btn btn-info">Guarda la Factura en Exel</button>
                         <script>capture(0);</script>
                         </div>
@@ -95,7 +96,7 @@ $time = $row->time;
                     <br><br><br><br><br>
 				</div>
             </div>
-        <div class="col-md-1" style="width: 2%;"></div>
+        <div class="col-md-1"></div>
     </div>
 </section>
 <?php

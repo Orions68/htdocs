@@ -93,18 +93,19 @@ if (isset($_POST["date"]))
                         </div>
                     </div>
                     <a id="image' . $j . '" download="Factura Nº ' . $id[$j] . '.png"></a>
-                    <br><br>
-                    <button onclick="pdfDown(' . $j . ')" class="btn btn-secondary btn-lg">Descarga la Factura en PDF</button>
-                    <br><br><br>
+                    <br><br><br><br>
                     <div class="row">
                         <div class="col-md-4">
                             <button onclick="printIt(' . $j . ')" style="width:160px; height:80px;" class="btn btn-primary">Imprime la Factura</button>
+                        </div>
+                        <div class="col-md-4">
+                        <button onclick="pdfDown(' . $j . ')" class="btn btn-secondary btn-lg">Descarga la Factura en PDF</button>
                         </div>
                         <div class="col-md-6">
                         <button onclick="window.open(\'saveIt.php?id=' . $id[$j] . '\', \'_blank\')" style="width:160px; height:80px;" class="btn btn-info">Guarda la Factura en Exel</button>
                             <script>capture(' . $j . ');</script>
                         </div>
-                    </div><br><br>';
+                    </div><br><br><br>';
                 }
 				?>
                 <br><br>

@@ -248,14 +248,13 @@ include "includes/header.php";
                 }
                 ?>
                 </table>
+                <br><br><br><br>
+                <button class="btn btn-danger" onclick="window.close()">Cierra Esta Ventana</button>
                 </div>
             </div>
         <div class="col-md-1" style="width:3%;"></div>
     </div>
 </section>
-<br><br>
-<button class="btn btn-danger" onclick="window.close()">Cierra Esta Ventana</button>
-    <br><br><br><br><br>
 <?php
 include "includes/footer.html";
 ?>

@@ -30,8 +30,6 @@ if (isset($_POST["job"]))
     $date = $_POST["date"];
     $time = $_POST["time"];
     $total = $hand + $prices;
-    // $igic = $hand * .07;
-    // $totaligic = $total + $igic;
 }
 ?>
 <section class="container-fluid pt-3">

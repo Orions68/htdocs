@@ -96,6 +96,27 @@ if(isset($_REQUEST["id"]))
             $active_sheet->getRowDimension($i + 5)->setRowHeight(40); // Cambia el tamaño Vertical de las filas usadas en la planilla.
         }
     }
+
+    for ($i = 1; $i < 3; $i++)
+    {
+        $active_sheet->getRowDimension($i)->setRowHeight(60); // Cambia el tamaño Vertical de las filas usadas en la planilla.
+
+        if ($i == 1)
+        {
+            $active_sheet->getRowDimension($i)->setRowHeight(20); // Cambia el tamaño Vertical de las filas usadas en la planilla.
+            $active_sheet->getColumnDimension(chr(64 + $i))->setWidth(15);
+            $active_sheet->getColumnDimension(chr(64 + $i + 1))->setWidth(40); // Si es la Letra C le da el tamaño horizontal 52.
+            $active_sheet->getColumnDimension(chr(64 + $i + 2))->setWidth(50); // Si es la Letra C le da el tamaño horizontal 52.
+            for ($j = 68; $j < 75; $j++)
+            {
+                $active_sheet->getColumnDimension(chr($j))->setWidth(15); // Si es la Letra C le da el tamaño horizontal 52.
+            }
+            $active_sheet->getColumnDimension(chr(64 + $i + 10))->setWidth(20);
+        }
+    }
+    $active_sheet->getRowDimension($i + 1)->setRowHeight(40); // Cambia el tamaño Vertical de las filas usadas en la planilla.
+    $active_sheet->getRowDimension($i + 3)->setRowHeight(40); // Cambia el tamaño Vertical de las filas usadas en la planilla.
+    $active_sheet->getRowDimension($i + 5)->setRowHeight(40); // Cambia el tamaño Vertical de las filas usadas en la planilla.
 		
 	$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($sheet, "Xlsx");
 
