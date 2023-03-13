@@ -5,37 +5,41 @@ $title = "Guardando la Factura";
 include "includes/header.php";
 include "includes/modal-invoice.html";
 
-for ($i = 0; $i < (count($_POST) - 1) / 4; $i++) // Hago un bucle hasta el tamaño del POST -1 ya que vienen 5 valores pero necesito obtener 4 y divido la cantidad por 4, para obtener la cantidad de elementos en los arrays.
+if (isset($_POST["way"]))
 {
-	$id[$i] = $_POST["id" . $i]; // En $id[$i] pongo los valores recibidos en $_POST["id0"], $_POST["id1"], etc.
     $way = $_POST["way"];
-	$product[$i] = $_POST["product" . $i];
-	$price[$i] = $_POST["price" . $i];
-	$qtty[$i] = $_POST["qtty" . $i];
-    $partial = "";
-    $j = 0;
 
-    $sql = "UPDATE products SET stock=stock - $qtty[$i] WHERE id=$id[$i]"; // Descuento de la base de datos el stock de los artículos comprados.
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-
-    $sql = "SELECT * FROM products WHERE id=$id[$i]";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    if ($stmt->rowCount() > 0)
+    for ($i = 0; $i < (count($_POST) - 2) / 4; $i++) // Hago un bucle hasta el tamaño del POST -1 ya que vienen 5 valores pero necesito obtener 4 y divido la cantidad por 4, para obtener la cantidad de elementos en los arrays.
     {
-        while($row = $stmt->fetch(PDO::FETCH_OBJ))
+        $id[$i] = $_POST["id" . $i]; // En $id[$i] pongo los valores recibidos en $_POST["id0"], $_POST["id1"], etc.
+        $product[$i] = $_POST["product" . $i];
+        $price[$i] = $_POST["price" . $i];
+        $qtty[$i] = $_POST["qtty" . $i];
+        $partial = "";
+        $j = 0;
+
+        $sql = "UPDATE products SET stock=stock - $qtty[$i] WHERE id=$id[$i]"; // Descuento de la base de datos el stock de los artículos comprados.
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $sql = "SELECT * FROM products WHERE id=$id[$i]";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0)
         {
-            if ($row->stock <= 5) // Si el stock de alguno de los productos comprados es menor o igual a 5.
+            while($row = $stmt->fetch(PDO::FETCH_OBJ))
             {
-                $product[$j] = $row->product . " Queda en: " . $row->stock . " Artículos."; // Pongo en el array $product el nombre del producto y la cantidad que queda de él.
-                $j++;
+                if ($row->stock <= 5) // Si el stock de alguno de los productos comprados es menor o igual a 5.
+                {
+                    $product[$j] = $row->product . " Queda en: " . $row->stock . " Artículos."; // Pongo en el array $product el nombre del producto y la cantidad que queda de él.
+                    $j++;
+                }
             }
         }
     }
+    $date = date("Y-m-d"); // Obtengo la fecha del día de la facturación.
+    $time = date("H:i:s"); // Obtengo la hora de la facturación.
 }
-$date = date("Y-m-d"); // Obtengo la fecha del día de la facturación.
-$time = date("H:i:s"); // Obtengo la hora de la facturación.
 
 if (count($product) > 0) // Si el array $product contiene algún dato.
 {
@@ -78,7 +82,7 @@ $stmt->execute(array(':id' => null, ':client_id' => $client_id, ':product_id' =>
             <div class="col-md-10">
                 <div id="view1">
                     <br><br><br><br>
-                    <script>toast('0', 'Factura de Monto: <?php echo number_format((float)$total, 2, ",", ".");?>', 'Almacenada Correctamente en la base de datos.');</script>
+                    <script>toast(0, 'Factura de Monto: <?php echo number_format((float)$total, 2, ",", ".");?>', 'Almacenada Correctamente en la base de datos.');</script>
 					<br><br>
 				</div>
             </div>

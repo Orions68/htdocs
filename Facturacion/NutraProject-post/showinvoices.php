@@ -59,6 +59,9 @@ include "includes/function.php";
                                 <div class="column right" style="background-color:#efefef;">
                                 <h4>A Pagar de I.V.A.</h4>
                                 </div>
+                                <div class="column right" style="background-color:#efefef;">
+                                <h4>Total a Pagar + I.V.A.</h4>
+                                </div>
                             </div>';
 
                             result($conn, $row); // Llama a la función result, le pasa la conexión y el resultado de la base de datos.
@@ -86,20 +89,24 @@ include "includes/function.php";
                                 <div class="column right" style="background-color:#efefef;">
                                 <h5>' . number_format((float)$total * .21, 2, ",", ".") . ' €</h5>
                                 </div>
+                                <div class="column right" style="background-color:#efefef;">
+                                <h5>' . number_format((float)$total, 2, ",", ".") . ' €</h5>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="column total">Total I.V.A. Incluido: ' . number_format((float)$total, 2, ",", ".") . ' €
                             </div></div>
                         </div>
                         <a id="image' . $j . '" download="Factura a: ' . $client . '.png"></a>
-                        <br><br>
-                        <button onclick="pdfDown(' . $j . ')" class="btn btn-secondary btn-lg">Descarga la Factura en PDF</button>
-                        <br><br><br>
+                        <br><br><br><br>
                         <div class="row">
                             <div class="col-md-4">
                             <button onclick="printIt(' . $j . ')" style="width:160px; height:80px;" class="btn btn-primary">Imprimir Ticket</button>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
+                            <button onclick="pdfDown(' . $j . ')" class="btn btn-secondary btn-lg">Descarga la Factura en PDF</button>
+                            </div>
+                            <div class="col-md-3">
                             <button onclick="window.open(\'saveIt.php?id=' . $id . '\', \'_blank\')" style="width:160px; height:80px;" class="btn btn-info">Guardar Factura en Excel</button>
                             <script>capture(' . $j . ');</script>
                             </div>

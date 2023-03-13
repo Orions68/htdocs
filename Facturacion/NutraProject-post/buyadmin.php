@@ -42,8 +42,9 @@ if (isset($_POST["invoice"])) // Si llego invoice
                         for ($i = 0; $i < count($product); $i++) // Hago un bucle al tamaño del array $product.
                         {
                             echo "<script>price[" . $i . "] = " . $price[$i] . "</script>"; // Asigno a la variable de javascript price en la posición $i el contenido del array $price en $i.
+                            echo "<script>console.log('El primer precio es: ' + price[0])</script>";
                             echo "<script>qtty[" . $i . "] = " . $qtty[$i] . "</script>"; // Asigno a la variable de javascript qtty en la posición $i el contenido del array $qtty en $i.
-                            $total += $price[$i] * $qtty[$i]; // Sumo los resultados de multiplicar el precio y la cantidad del producto recibido en la variable $total.
+                            $total += floatval($price[$i]) * intval($qtty[$i]); // Sumo los resultados de multiplicar el precio y la cantidad del producto recibido en la variable $total.
                             echo "<label>Producto: <input type='text' name='product" . $i . "' value='" . $product[$i] . "' style='width: 450px;' readonly></label>&nbsp;&nbsp;&nbsp;&nbsp;
                             <label><input id='price" . $i . "' type='number' name='price" . $i . "' value='" . $price[$i] . "' min='0' onchange='calculate(this.id)' style='width: 128px;' step='.1'> € Precio</label>&nbsp;&nbsp;&nbsp;&nbsp;
                             <label><input id='qtty" . $i . "' type='number' name='qtty" . $i . "' value='" . $qtty[$i] . "' min='1' onchange='calculate(this.id)' style='width: 64px;'> Cantidad</label>
@@ -58,12 +59,12 @@ if (isset($_POST["invoice"])) // Si llego invoice
                     </form>
                     <br><br>
                     <?php
-                    $valor = number_format((float)$total, 2, ',', '.');
-                    echo "<label><input id='total' type='number' name='total' value='" . (float)$valor . "' readonly> € Total</label>
+                    $valor = number_format(($total * 100 / 121), 2, '.', '');
+                    echo "<label><input id='total' type='number' name='total' value='" . $valor . "' readonly> € Base Imponible</label>
                     <br>
-                    <label><input id='iva' type='number' name='iva' value='" . (float)$valor * .21 . "' readonly> € I.V.A.</label>
+                    <label><input id='iva' type='number' name='iva' value='" . number_format(($valor * .21), 2, '.', '') . "' readonly> € I.V.A.</label>
                     <br>
-                    <label><input id='totaliva' type='number' name='final' value='" . (float)$valor * 1.21 . "' readonly> € Total más I.V.A.</label>
+                    <label><input id='totaliva' type='number' name='final' value='" . number_format(($valor * 1.21), 2, '.', '') . "' readonly> € Total más I.V.A.</label>
                     <br>";
                     // El echo anterior muestra los totales parciales, el iva y el total más iva a pagar.
                     ?>

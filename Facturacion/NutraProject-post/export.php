@@ -1,5 +1,4 @@
 <?php
-
 include 'includes/conn.php';
 include 'vendor/autoload.php';
 
@@ -107,8 +106,7 @@ if(isset($_POST["export"]))
             $active_sheet->getColumnDimension(chr(64 + $i + 6))->setWidth(17.5);
             $active_sheet->getColumnDimension(chr(64 + $i + 7))->setWidth(15);
             $active_sheet->getColumnDimension(chr(64 + $i + 8))->setWidth(15);
-            $active_sheet->getColumnDimension(chr(64 + $i + 9))->setWidth(15);
-            $active_sheet->getColumnDimension(chr(64 + $i + 10))->setWidth(15);
+            $active_sheet->getColumnDimension(chr(64 + $i + 9))->setWidth(16);
         }
 
         if ($i == $count - 1)
@@ -198,73 +196,73 @@ include "includes/header.php";
 							<td>' . $row["time"] . '</td>
 							<td>' . $row["date"] . '</td>
 							<td style="text-align: right;">' . number_format((float)$row["total"] * 100 / 121, 2, ',', '.') . ' €</td>
-							<td style="text-align: center;">' . number_format((float)$row["iva"], 2, ',', '.') . ' €</td>
+							<td style="text-align: center;">' . number_format((float)$row["total"] * 100 / 121 * .21, 2, ',', '.') . ' €</td>
 							<td style="text-align: right;">' . number_format((float)$row["total"], 2, ',', '.') . ' €</td>
 							</tr>';
 							$product = "";
 							$price = "";
 							$qtty = "";
 						}
-
-						function result($conn, $row, $where) // Función result recibe la conexión, las filas de la base de datos $row y un 1 o un 0 para saber de donde se llama.
-						{
-							global $name, $price, $product, $qtty;
-							if ($row["client_id"] != null) // Si la ID del cliente no es null.
-							{
-								$client = $row["client_id"]; // Busco el nombre del cliente por la ID.
-								$sql = "SELECT name FROM clients WHERE id=$client";
-								$stmt = $conn->prepare($sql);
-								$stmt->execute();
-								$row1 = $stmt->fetch(PDO::FETCH_OBJ);
-								$name = $row1->name;
-							}
-							else // Si es null.
-							{
-								$name = "Consumidor Final"; // $name es Consumidor Final.
-							}
-							$productArray = explode(",", $row["product_id"]);
-							$qttyArray = explode(",", $row["qtty"]);
-					
-							for ($i = 0; $i < count($productArray) - 1; $i++)
-							{
-								$sql_product = "SELECT product, price FROM products WHERE id=$productArray[$i]";
-								$stmt = $conn->prepare($sql_product);
-								$stmt->execute();
-								$row_product = $stmt->fetch(PDO::FETCH_OBJ);
-								$product_price = $row_product->product . "," . $row_product->price;
-								$preproduct = explode(",", $product_price);
-								if ($i == count($productArray) - 2)
-								{
-									$product .= $preproduct[0];
-									$price .= number_format((float)$preproduct[1], 2, ',', '.') . " €";
-									$qtty .= $qttyArray[$i];
-								}
-								else
-								{
-									if ($where == 1) // Si $where es 1, se llamo desde la tabla HTML.
-									{
-										$product .= $preproduct[0] . "<br>"; // Saltos de línea HTML.
-										$price .= number_format((float)$preproduct[1], 2, ',', '.') . " €<br>";
-										$qtty .= $qttyArray[$i] . "<br>";
-									}
-									else // Si no es 1 se llamo desde la plantilla de Excel.
-									{
-										$product .= $preproduct[0] . "\n"; // Saltos de línea \n.
-										$price .= number_format((float)$preproduct[1], 2, ',', '.') . " €\n";
-										$qtty .= $qttyArray[$i] . "\n";
-									}
-								}
-							}
-						}
 						?>
 					 </table>
-					 <br>
+					 <br><br>
 					 <button class="btn btn-danger btn-lg" onclick="window.close()">Cierra Esta Ventana</button>
-                     <br><br><br><br><br><br>
+                     <br><br><br><br><br>
 					</div>
 				<div class="col-md-1" style="width:3%;"></div>
 			</div>
     	</section>
 <?php
 include "includes/footer.html";
+
+function result($conn, $row, $where) // Función result recibe la conexión, las filas de la base de datos $row y un 1 o un 0 para saber de donde se llama.
+{
+    global $name, $price, $product, $qtty;
+    if ($row["client_id"] != null) // Si la ID del cliente no es null.
+    {
+        $client = $row["client_id"]; // Busco el nombre del cliente por la ID.
+        $sql = "SELECT name FROM clients WHERE id=$client";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $row1 = $stmt->fetch(PDO::FETCH_OBJ);
+        $name = $row1->name;
+    }
+    else // Si es null.
+    {
+        $name = "Consumidor Final"; // $name es Consumidor Final.
+    }
+    $productArray = explode(",", $row["product_id"]);
+    $qttyArray = explode(",", $row["qtty"]);
+
+    for ($i = 0; $i < count($productArray) - 1; $i++)
+    {
+        $sql_product = "SELECT product, price FROM products WHERE id=$productArray[$i]";
+        $stmt = $conn->prepare($sql_product);
+        $stmt->execute();
+        $row_product = $stmt->fetch(PDO::FETCH_OBJ);
+        $product_price = $row_product->product . "," . $row_product->price;
+        $preproduct = explode(",", $product_price);
+        if ($i == count($productArray) - 2)
+        {
+            $product .= $preproduct[0];
+            $price .= number_format((float)$preproduct[1], 2, ',', '.') . " €";
+            $qtty .= $qttyArray[$i];
+        }
+        else
+        {
+            if ($where == 1) // Si $where es 1, se llamo desde la tabla HTML.
+            {
+                $product .= $preproduct[0] . "<br>"; // Saltos de línea HTML.
+                $price .= number_format((float)$preproduct[1], 2, ',', '.') . " €<br>";
+                $qtty .= $qttyArray[$i] . "<br>";
+            }
+            else // Si no es 1 se llamo desde la plantilla de Excel.
+            {
+                $product .= $preproduct[0] . "\n"; // Saltos de línea \n.
+                $price .= number_format((float)$preproduct[1], 2, ',', '.') . " €\n";
+                $qtty .= $qttyArray[$i] . "\n";
+            }
+        }
+    }
+}
 ?>
