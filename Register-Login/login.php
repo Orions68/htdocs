@@ -6,7 +6,7 @@ if (isset($_POST["email"]))
     $pass = $_POST["pass"];
     $ok = false;
     
-    $stmt = $conn->prepare("SELECT pass, activate FROM users WHERE email='$email'"); // This is Correct.
+    $stmt = $conn->prepare("SELECT pass, activate FROM user WHERE email='$email'"); // This is Correct.
     $stmt->execute();
 
     $row = $stmt->fetch(PDO::FETCH_OBJ);

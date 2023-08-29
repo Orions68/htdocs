@@ -5,14 +5,14 @@ $urlArray = explode('/', $activate);
 $hash = $urlArray[3];
 $email = $urlArray[4];
 
-$stmt = $conn->prepare("SELECT * FROM users WHERE email ='" . $email . "'");
+$stmt = $conn->prepare("SELECT * FROM user WHERE email ='" . $email . "'");
 $stmt->execute();
 
 while ($row = $stmt->fetch(PDO::FETCH_OBJ))
 {
 	if ($row->hash == $hash)
 	{		
-		$stmt = $conn->prepare("UPDATE users SET hash = :hash, activate = :activate WHERE email ='" . $email . "'");
+		$stmt = $conn->prepare("UPDATE user SET hash = :hash, activate = :activate WHERE email ='" . $email . "'");
 		$stmt->execute(array(':hash' => '', ':activate' => 1));
 		
 		$_SESSION['user'] = $email;

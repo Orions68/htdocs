@@ -124,7 +124,7 @@ include "includes/footer.html";
 
 function getProduct($conn, $product_id)
 {
-    $sql_product = "SELECT product, price FROM products WHERE id='$product_id'";
+    $sql_product = "SELECT product, price FROM products WHERE id=$product_id";
     $stmt = $conn->prepare($sql_product);
     $stmt->execute();
     $row_product = $stmt->fetch(PDO::FETCH_OBJ);

@@ -13,7 +13,7 @@ if (isset($_POST["email"]))
     $encrypt = password_hash($pass, PASSWORD_DEFAULT);
     $hash = substr(md5(uniqid($name, true)), 16, 16);
 
-    $stmt = $conn->prepare("SELECT email FROM users WHERE email='$email'");
+    $stmt = $conn->prepare("SELECT email FROM user WHERE email='$email'");
     $stmt->execute();
 
     if ($stmt->fetch(PDO::FETCH_OBJ))
@@ -23,7 +23,7 @@ if (isset($_POST["email"]))
 
     if (!$already)
     {
-        $stmt = $conn->prepare("INSERT INTO users VALUES (:id, :name, :phone, :bday, :email, :pass, :hash, :activate);");
+        $stmt = $conn->prepare("INSERT INTO user VALUES (:id, :name, :phone, :bday, :email, :pass, :hash, :activate);");
         $stmt->execute(array(':id' => null, ':name' => $name, ':phone' => $phone, ':bday' => $bday, ':email' => $email, ':pass' => $encrypt, ':hash' => $hash, ':activate' => 0));
 
         $subject = "DO NOT REPLAY";
